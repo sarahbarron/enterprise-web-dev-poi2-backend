@@ -72,7 +72,10 @@
 
   },
   "newCategory": {
-    "name": "New Poi"
+    "name": "New Category"
+  },
+  "newCategory2": {
+    "name": "2 New Categories"
   },
   "newRating": {
     "rating": 5
