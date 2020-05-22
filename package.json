@@ -20,13 +20,16 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "handlebars": "^4.7.3",
+    "lodash": "^4.17.15",
     "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^5.9.2",
     "util": "^0.12.2"
   },
   "devDependencies": {
+    "axios": "^0.19.2",
     "chai": "^4.2.0",
     "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
     "prettier": "^1.19.1"
   },
   "prettier": {

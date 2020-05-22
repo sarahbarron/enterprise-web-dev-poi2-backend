@@ -1,0 +1,88 @@
+{
+  "poiService": "http://localhost:3000",
+  "users": [
+
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"    }
+  ],
+  "category": [
+    {
+      "name": "WATERFORD GREENWAY"
+    },
+    {
+      "name": "GREAT WESTERN GREENWAY"
+    },
+    {
+      "name": "BOYNE GREENWAY"
+    },
+    {
+      "name": "COPPER COAST"
+    }
+  ],
+  "poi": [
+
+    {
+      "name": "Suir Bridge",
+      "description": "a lovely bridge",
+      "latitude": 52.279270,
+      "longitude": -7.150474,
+      "user": "->users.marge",
+      "category": "->category.waterford"
+    },
+    {
+      "name": "Mount Congreve",
+      "description": "The route passes the bottom of the Mount Congreve",
+      "latitude": 52.241090,
+      "longitude": -7.219084,
+      "user": "->users.bart",
+      "category": "->category.waterford"
+    },
+    {
+      "name": "Suir Valley Railway",
+      "description": "This family friendly railway runs mostly along the picturesque banks of the River Suir",
+      "latitude": 52.246973,
+      "longitude": -7.246926,
+      "user": "usershomer",
+      "category": "categorywaterford"
+    }
+   ],
+  "newPoi": {
+    "name": "Cove",
+    "category": "Waterford",
+    "image": "65445645",
+    "description": "boards.",
+    "longitude": -7.399,
+    "latitude": 52.1079
+
+  },
+  "newCategory": {
+    "name": "New Poi"
+  },
+  "newRating": {
+    "rating": 5
+  },
+  "newUser": {
+    "firstName": "New",
+    "lastName": "User",
+    "email": "newuser@simpson.com",
+    "password": "secret",
+    "numOfPoi": 4,
+    "scope": "user"
+  }
+}
