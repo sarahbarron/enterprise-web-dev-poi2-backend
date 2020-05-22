@@ -44,6 +44,7 @@ module.exports = [
     {method: 'POST',path: '/delete-category',config: Category.deleteCategory},
     {method: 'POST', path: '/home', config: Poi.home},
 
+
     // Route to public images and allow them to be viewed by everybody
     {
         method: 'GET',

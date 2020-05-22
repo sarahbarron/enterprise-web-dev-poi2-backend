@@ -24,7 +24,7 @@ db.on('disconnected', function() {
 
 db.once('open', function() {
     console.log(`database connected to ${this.name} on ${this.host}`);
-    // seed();
+    seed();
 
 });
 
