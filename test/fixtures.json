@@ -1,7 +1,6 @@
 {
   "poiService": "http://localhost:3000",
   "users": [
-
     {
       "firstName": "Homer",
       "lastName": "Simpson",
@@ -19,7 +18,8 @@
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret"    }
+      "password": "secret"
+    }
   ],
   "category": [
     {
@@ -84,8 +84,12 @@
     "firstName": "New",
     "lastName": "User",
     "email": "newuser@simpson.com",
-    "password": "secret",
-    "numOfPoi": 4,
-    "scope": "user"
+    "password": "secret"
+  },
+  "newUser2": {
+    "firstName": "New2",
+    "lastName": "User2",
+    "email": "newuser2@simpson.com",
+    "password": "secret2"
   }
 }
