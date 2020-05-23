@@ -31,6 +31,14 @@ const Pois = {
     }
   },
 
+  // finds pois by the category id
+  findByCategory: {
+    auth: false,
+    handler: async function(request, h){
+      const pois = await Poi.find({category: request.params.id});
+      return pois;
+    }
+  },
 //  Create a Pois
   create: {
     auth:false,

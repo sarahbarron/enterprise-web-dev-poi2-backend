@@ -25,6 +25,7 @@ const Categories = {
       }
     }
   },
+
   create: {
     auth: false,
     handler: async function(request, h) {

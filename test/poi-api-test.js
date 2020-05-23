@@ -98,4 +98,6 @@ suite('Poi Api Tests', function()
     const allPois = await poiService.getPois();
     assert.equal(allPois.length,0);
   });
+
+
 })
