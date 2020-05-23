@@ -3,7 +3,7 @@
 const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
 
-const Poi = {
+const Pois = {
 
   // Find all pois
   find: {
@@ -14,7 +14,7 @@ const Poi = {
     }
   },
 
-  // Find One Poi
+  // Find One Pois
   findOne:{
     auth: false,
     handler: async function(request, h){
@@ -22,16 +22,16 @@ const Poi = {
         const poi = await Poi.findOne({_id: request.params.id});
         if(!poi)
         {
-          return Boom.notFound('No Poi with this Id');
+          return Boom.notFound('No Pois with this Id');
         }
         return poi;
       }catch(err){
-        return Boom.notFound('No Poi with this Id');
+        return Boom.notFound('No Pois with this Id');
       }
     }
   },
 
-//  Create a Poi
+//  Create a Pois
   create: {
     auth:false,
     handler: async function(request, h){
@@ -59,7 +59,7 @@ const Poi = {
     auth: false,
     handler: async function(request, h){
       const response = await Poi.deleteOne({_id: request.params.id});
-      if (response.deleteCount == 1)
+      if (response.deletedCount == 1)
       {
         return {success: true};
       }
@@ -67,3 +67,5 @@ const Poi = {
     }
   }
 }
+
+module.exports = Pois;

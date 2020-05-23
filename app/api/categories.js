@@ -54,6 +54,7 @@ const Categories = {
       return Boom.notFound('id not found');
     }
   }
+
 };
 
 module.exports = Categories;
