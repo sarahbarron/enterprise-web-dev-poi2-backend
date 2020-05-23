@@ -7,8 +7,8 @@ const Categories = {
   find: {
     auth: false,
     handler: async function(request, h) {
-      const Categories = await Category.find();
-      return Categories;
+      const categories = await Category.find();
+      return categories;
     }
   },
   findOne: {
@@ -28,7 +28,7 @@ const Categories = {
   create: {
     auth: false,
     handler: async function(request, h) {
-      const newCategory = await new Category(request.payload);
+      const newCategory = new Category(request.payload);
       const category = await newCategory.save();
       if (category) {
         return h.response(category).code(201);
