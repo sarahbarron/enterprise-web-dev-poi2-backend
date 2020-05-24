@@ -110,6 +110,34 @@ class PoiService {
     return response.data;
   }
 
+  async getImages() {
+    const response = await axios.get(this.baseUrl + '/api/images');
+    return response.data;
+  }
+
+  async getImage(id) {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/images/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createImage(newImage) {
+    const response = await axios.post(this.baseUrl + '/api/images', newImage);
+    return response.data;
+  }
+
+  async deleteAllImages() {
+    const response = await axios.delete(this.baseUrl + '/api/images');
+    return response.data;
+  }
+
+  async deleteOneImage(id) {
+    const response = await axios.delete(this.baseUrl + '/api/images/' + id);
+    return response.data;
+  }
 }
 
 module.exports = PoiService;

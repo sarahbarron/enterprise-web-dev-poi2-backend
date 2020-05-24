@@ -7,8 +7,7 @@ const Hapi = require('@hapi/hapi');
 
 const server = Hapi.server({
     port: process.env.PORT || 3000,
-    //enable cors for all routes
-    routes: {cors: true}
+    routes: { cors: true }
 });
 
 // db.js creates a connection to the mongo database

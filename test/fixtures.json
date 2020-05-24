@@ -35,6 +35,20 @@
       "name": "COPPER COAST"
     }
   ],
+  "image": [
+    {
+      "public_id": "fixture_json_for_testing_1",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353941/uga5m1tedgm34hofrujn.jpg"
+    },
+    {
+      "public_id":  "fixture_json_for_testing_1",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353688/fixture_json_for_testing_2.jpg"
+    },
+    {
+      "public_id": "fixture_json_for_testing_3",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353663/fixture_json_for_testing_3.jpg"
+    }
+  ],
   "poi": [
 
     {
@@ -91,5 +105,9 @@
     "lastName": "User2",
     "email": "newuser2@simpson.com",
     "password": "secret2"
+  },
+  "newImage": {
+    "public_id": "fixtures_json_for_testing_newImage",
+    "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
   }
 }
