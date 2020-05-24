@@ -19,21 +19,21 @@ const PoiUtil = {
         {
             const poi = await Poi.findById(poi_id).populate('image').populate('user').lean();
             const user_id = poi.user._id;
-            const images = poi.image;
+            // const images = poi.image;
             const user = await User.findById(user_id);
             let numOfPoi = user.numOfPoi;
             user.numOfPoi = numOfPoi - 1;
             await user.save();
 
-            if (images.length > 0)
-            {
-                let i;
-                for (i = 0; i < images.length; i++)
-                {
-                    let image_id = images[i]._id;
-                    await ImageStore.deleteImage(image_id);
-                }
-            }
+            // if (images.length > 0)
+            // {
+            //     let i;
+            //     for (i = 0; i < images.length; i++)
+            //     {
+            //         let image_id = images[i]._id;
+            //         await ImageStore.deleteImage(image_id);
+            //     }
+            // }
             await Poi.findByIdAndDelete(poi_id);
         } catch (e)
         {
