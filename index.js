@@ -7,8 +7,9 @@ const Hapi = require('@hapi/hapi');
 
 const server = Hapi.server({
     port: process.env.PORT || 3000,
-    routes: { cors: true }
+    routes : { "cors": true }
 });
+
 
 // db.js creates a connection to the mongo database
 require('./app/models/db');
@@ -61,6 +62,7 @@ async function init() {
             isSecure: false
         }
     });
+
 
     // Set up the session as the default strategy for all routes
     server.auth.default('session');
