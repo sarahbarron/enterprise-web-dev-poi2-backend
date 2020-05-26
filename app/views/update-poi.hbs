@@ -6,13 +6,13 @@
 <div class="horizontal rule"></div>
     <section class="ui 15 column middle aligned grid raised segment">
     <!-- If there are no images don't show the delete images section -->
-    {{#if poi.image}}
+    {{#if image}}
         <div class="row">
             <div class="column two wide"><i class="teal huge trash alternate icon"></i></div>
             <div class="column ten wide"><h2>Delete Unwanted Images</h2></div>
         </div>
         <div class="row">
-            {{#each poi.image}}
+            {{#each image}}
                 {{> image-card}}
             {{/each}}
         </div>

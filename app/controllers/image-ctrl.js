@@ -42,7 +42,6 @@ const Gallery = {
         {
             try
             {
-
                 const image_id = request.params.img_id;
                 await ImageStore.deleteImage(image_id);
                 return h.redirect('/home');

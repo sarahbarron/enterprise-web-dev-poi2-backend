@@ -1,0 +1,113 @@
+{
+  "poiService": "http://localhost:3000",
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  ],
+  "category": [
+    {
+      "name": "WATERFORD GREENWAY"
+    },
+    {
+      "name": "GREAT WESTERN GREENWAY"
+    },
+    {
+      "name": "BOYNE GREENWAY"
+    },
+    {
+      "name": "COPPER COAST"
+    }
+  ],
+  "image": [
+    {
+      "public_id": "fixture_json_for_testing_1",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353941/uga5m1tedgm34hofrujn.jpg"
+    },
+    {
+      "public_id":  "fixture_json_for_testing_1",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353688/fixture_json_for_testing_2.jpg"
+    },
+    {
+      "public_id": "fixture_json_for_testing_3",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353663/fixture_json_for_testing_3.jpg"
+    }
+  ],
+  "poi": [
+
+    {
+      "name": "Suir Bridge",
+      "description": "a lovely bridge",
+      "latitude": 52.279270,
+      "longitude": -7.150474
+    },
+    {
+      "name": "Mount Congreve",
+      "description": "The route passes the bottom of the Mount Congreve",
+      "latitude": 52.241090,
+      "longitude": -7.219084
+
+    },
+    {
+      "name": "Suir Valley Railway",
+      "description": "This family friendly railway runs mostly along the picturesque banks of the River Suir",
+      "latitude": 52.246973,
+      "longitude": -7.246926
+
+    }
+   ],
+  "newPoi": {
+    "name": "Cove",
+    "description": "boards.",
+    "longitude": -7.399,
+    "latitude": 52.1079
+  },
+  "newPoi2": {
+    "name": "another poi",
+    "description": "just another poi to test delete all",
+    "longitude": -7.399,
+    "latitude": 52.1079
+  },
+
+  "newCategory": {
+    "name": "New Category"
+  },
+  "newCategory2": {
+    "name": "2 New Categories"
+  },
+  "newRating": {
+    "rating": 5
+  },
+  "newUser": {
+    "firstName": "New",
+    "lastName": "User",
+    "email": "newuser@simpson.com",
+    "password": "secret"
+  },
+  "newUser2": {
+    "firstName": "New2",
+    "lastName": "User2",
+    "email": "newuser2@simpson.com",
+    "password": "secret2"
+  },
+  "newImage": {
+    "public_id": "fixtures_json_for_testing_newImage",
+    "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
+  }
+}
