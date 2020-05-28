@@ -98,7 +98,7 @@
     "firstName": "New",
     "lastName": "User",
     "email": "newuser@simpson.com",
-    "password": "secret"
+    "password": "secretsecret"
   },
   "newUser2": {
     "firstName": "New2",

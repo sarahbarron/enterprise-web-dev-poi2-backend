@@ -7,6 +7,20 @@ class PoiService {
     this.baseUrl = baseUrl;
   }
 
+  //JWT authentication
+  async authenticate(user) {
+    try {
+      const response = await axios.post(this.baseUrl + '/api/users/authenticate', user);
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  // clear JWT token
+  async clearAuth(user) {
+    axios.defaults.headers.common['Authorization'] = '';
+  }
   async getUsers() {
     try {
       const response = await axios.get(this.baseUrl + '/api/users');
@@ -82,8 +96,14 @@ class PoiService {
   }
 
   async getPois() {
-    const response = await axios.get(this.baseUrl + '/api/pois');
-    return response.data;
+    try
+    {
+      const response = await axios.get(this.baseUrl + '/api/pois');
+      return response.data;
+    }catch (e)
+    {
+      return null;
+    }
   }
 
   async getPoi(id) {
@@ -95,19 +115,36 @@ class PoiService {
     }
   }
 
-  async createPoi(newPoi) {
-    const response = await axios.post(this.baseUrl + '/api/pois', newPoi);
-    return response.data;
+  async createPoi(id, newPoi) {
+    try
+    {
+      const response = await axios.post(this.baseUrl + '/api/categories/' + id + '/pois', newPoi);
+      return response.data;
+    }catch (e){
+      return null;
+    }
   }
 
   async deleteAllPois() {
-    const response = await axios.delete(this.baseUrl + '/api/pois');
-    return response.data;
+    try
+    {
+      const response = await axios.delete(this.baseUrl + '/api/pois');
+      return response.data;
+    }catch (e)
+    {
+      return null;
+    }
   }
 
   async deleteOnePoi(id) {
-    const response = await axios.delete(this.baseUrl + '/api/pois/' + id);
-    return response.data;
+    try
+    {
+      const response = await axios.delete(this.baseUrl + '/api/pois/' + id);
+      return response.data;
+    }catch (e)
+    {
+      return null
+    }
   }
 
   async getImages() {
@@ -138,6 +175,7 @@ class PoiService {
     const response = await axios.delete(this.baseUrl + '/api/images/' + id);
     return response.data;
   }
+
 }
 
 module.exports = PoiService;

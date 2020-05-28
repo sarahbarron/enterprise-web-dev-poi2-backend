@@ -4,6 +4,8 @@
 const dotenv = require('dotenv')
 const ImageStore = require('./app/utils/image-store');
 const Hapi = require('@hapi/hapi');
+const utils = require('./app/api/utils');
+
 
 const server = Hapi.server({
     port: process.env.PORT || 3000,
@@ -35,6 +37,7 @@ async function init() {
     await server.register(require('@hapi/inert'));
     await server.register(require('@hapi/vision'));
     await server.register(require('@hapi/cookie'));
+    await server.register(require('hapi-auth-jwt2'));
 
     // Configure Cloudinary
     ImageStore.configure(credentials);
@@ -62,6 +65,14 @@ async function init() {
             isSecure: false
         }
     });
+
+    //JWT authentication
+    server.auth.strategy('jwt', 'jwt',
+      {
+          key: process.env.JWT_PASSWORD,
+          validate: utils.validate,
+          verifyOptions: { algorithms: ['HS256'] }
+      });
 
 
     // Set up the session as the default strategy for all routes

@@ -2,12 +2,16 @@
 
 const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
+const Category = require('../models/categories');
+const utils = require('./utils');
 
 const Pois = {
 
   // Find all pois
   find: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h){
       const pois = await Poi.find();
       return pois;
@@ -16,7 +20,9 @@ const Pois = {
 
   // Find One Pois
   findOne:{
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h){
       try{
         const poi = await Poi.findOne({_id: request.params.id});
@@ -33,29 +39,41 @@ const Pois = {
 
   // finds pois by the category id
   findByCategory: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h){
       const pois = await Poi.find({category: request.params.id});
       return pois;
     }
   },
+
 //  Create a Pois
   create: {
-    auth:false,
-    handler: async function(request, h){
-      const newPoi = new Poi(request.payload);
-      const poi = await newPoi.save();
-      if(poi)
+    auth: {
+      strategy: 'jwt',
+    },
+    handler: async function(request, h)
+    {
+      const userId = utils.getUserIdFromRequest(request);
+      let poi = new Poi(request.payload);
+      const category = await Category.findOne({ _id: request.params.id });
+      if (!category)
       {
-        return h.response(poi).code(201);
+        return Boom.notFound('No Category with this id');
       }
-      return Boom.badImplementation('error creating poi');
+      poi.category = category._id;
+      poi.user = userId;
+      poi = await poi.save();
+      return poi;
     }
   },
 
 //  delete all pois
   deleteAll:{
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h){
       await Poi.deleteMany({});
       return {success: true};
@@ -64,7 +82,9 @@ const Pois = {
 
 //  delete one
   deleteOne:{
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h){
       const response = await Poi.deleteOne({_id: request.params.id});
       if (response.deletedCount == 1)
