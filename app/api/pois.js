@@ -2,6 +2,8 @@
 
 const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
+const Category = require('../models/categories');
+const utils = require('./utils');
 
 const Pois = {
 
@@ -45,19 +47,25 @@ const Pois = {
       return pois;
     }
   },
+
 //  Create a Pois
   create: {
     auth: {
       strategy: 'jwt',
     },
-    handler: async function(request, h){
-      const newPoi = new Poi(request.payload);
-      const poi = await newPoi.save();
-      if(poi)
+    handler: async function(request, h)
+    {
+      const userId = utils.getUserIdFromRequest(request);
+      let poi = new Poi(request.payload);
+      const category = await Category.findOne({ _id: request.params.id });
+      if (!category)
       {
-        return h.response(poi).code(201);
+        return Boom.notFound('No Category with this id');
       }
-      return Boom.badImplementation('error creating poi');
+      poi.category = category._id;
+      poi.user = userId;
+      poi = await poi.save();
+      return poi;
     }
   },
 

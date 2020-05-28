@@ -5,12 +5,23 @@ const PoiService = require('./poi-service');
 const fixtures = require('./fixtures.json');
 const _ = require('lodash');
 
+
 suite('Images Api Tests', function()
 {
   let images = fixtures.image;
   let newImage = fixtures.newImage;
   const poiService = new PoiService(fixtures.poiService);
+  let newUser = fixtures.newUser;
 
+  suiteSetup(async function () {
+    await poiService.deleteAllUsers();
+    const returnedUser = await poiService.createUser(newUser);
+    const response = await poiService.authenticate(newUser);
+  });
+  suiteTeardown(async function() {
+    await poiService.deleteAllUsers();
+    poiService.clearAuth();
+  });
   setup(async function ()
   {
     await poiService.deleteAllImages();

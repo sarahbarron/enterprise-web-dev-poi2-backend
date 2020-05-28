@@ -9,8 +9,19 @@ suite('Category API tests', function () {
 
   let categories = fixtures.category;
   let newCategory = fixtures.newCategory;
-  let newCategory2 = fixtures.newCategory2;
   const poiService = new PoiService(fixtures.poiService);
+  let newUser = fixtures.newUser;
+
+  suiteSetup(async function() {
+    await poiService.deleteAllUsers();
+    const returnedUser = await poiService.createUser(newUser);
+    const response = await poiService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await poiService.deleteAllUsers();
+    poiService.clearAuth();
+  });
 
   setup(async function () {
     await poiService.deleteAllCategories();
@@ -48,16 +59,6 @@ suite('Category API tests', function () {
     await poiService.deleteOneCategory(c._id);
     c = await poiService.getCategory(c._id);
     assert(c==null);
-  })
-
-  test('delete all categories', async function() {
-    let c = await poiService.createCategory(newCategory);
-    let c2 = await poiService.createCategory(newCategory2);
-    assert(c._id != null);
-    assert(c2._id != null);
-    await poiService.deleteAllCategories();
-    const allCategories = await poiService.getCategories();
-    assert.equal(allCategories.length, 0);
   });
 
 

@@ -12,7 +12,7 @@ suite('Authentication API tests', function () {
 
   const poiService = new PoiService(fixtures.poiService);
 
-  setup(async function () {
+  suiteSetup(async function () {
     await poiService.deleteAllUsers();
     const returnedUser = await poiService.createUser(newUser);
     const response = await poiService.authenticate(newUser);
