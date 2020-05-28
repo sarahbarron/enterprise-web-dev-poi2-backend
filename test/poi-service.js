@@ -95,6 +95,36 @@ class PoiService {
     return response.data;
   }
 
+  async getLocations() {
+    const response = await axios.get(this.baseUrl + '/api/locations');
+    return response.data;
+  }
+
+  async getLocation(id) {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/locations/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async createLocation(newLocation) {
+    const response = await axios.post(this.baseUrl + '/api/locations', newLocation);
+    return response.data;
+  }
+
+  async deleteAllLocations() {
+    const response = await axios.delete(this.baseUrl + '/api/locations');
+    return response.data;
+  }
+
+  async deleteOneLocation(id) {
+    const response = await axios.delete(this.baseUrl + '/api/locations/' + id);
+    return response.data;
+  }
+
+
   async getPois() {
     try
     {

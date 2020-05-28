@@ -2,7 +2,7 @@ const Categories = require('./app/api/categories');
 const Pois = require('./app/api/pois');
 const Users = require('./app/api/user');
 const Images = require('./app/api/images');
-
+const Locations = require('./app/api/location');
 
 module.exports=[
   { method: 'GET', path: '/api/users', config: Users.find },
@@ -24,6 +24,12 @@ module.exports=[
   { method: 'POST', path: '/api/categories', config: Categories.create },
   { method: 'DELETE', path: '/api/categories/{id}', config: Categories.deleteOne },
   { method: 'DELETE', path: '/api/categories', config: Categories.deleteAll },
+
+  { method: 'GET', path: '/api/locations', config: Locations.find },
+  { method: 'GET', path: '/api/locations/{id}', config: Locations.findOne },
+  { method: 'POST', path: '/api/locations', config: Locations.create },
+  { method: 'DELETE', path: '/api/locations/{id}', config: Locations.deleteOne },
+  { method: 'DELETE', path: '/api/locations', config: Locations.deleteAll },
 
   { method: 'GET', path: '/api/images', config: Images.find },
   { method: 'GET', path: '/api/images/{id}', config: Images.findOne },

@@ -12,8 +12,10 @@ const PoiSchema = new Schema({
 
     name: String,
     description: String,
-    longitude: Number,
-    latitude: Number,
+    location: {
+        type: Schema.Types.ObjectID,
+        ref: 'Location'
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -21,11 +23,7 @@ const PoiSchema = new Schema({
     category: {
         type: Schema.Types.ObjectID,
         ref: 'Category',
-    },
-    // image: [{
-    //     type: Schema.Types.ObjectID,
-    //     ref: 'Image'
-    // }]
+    }
 });
 
 module.exports = Mongoose.model('Poi', PoiSchema);
