@@ -5,10 +5,11 @@
  */
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
+const Boom = require('@hapi/boom');
 
-const categorySchema = Schema({
+const locationSchema = Schema({
   lat: Number,
   lng: Number
 });
 
-module.exports = Mongoose.model('Location', categorySchema);
+module.exports = Mongoose.model('Location', locationSchema);

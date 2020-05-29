@@ -14,8 +14,15 @@ const Pois = {
       strategy: 'jwt',
     },
     handler: async function(request, h){
-      const pois = await Poi.find();
-      return pois;
+      try
+      {
+        const pois = await Poi.find().populate('location').lean();
+        return pois;
+      }catch (err)
+      {
+        return Boom.badImplementation('error fetching');
+      }
+
     }
   },
 
