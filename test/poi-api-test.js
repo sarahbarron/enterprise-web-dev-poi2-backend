@@ -14,27 +14,32 @@ suite('Poi Api Tests', function()
   let newUser = fixtures.newUser;
   const poiService = new PoiService(fixtures.poiService);
 
-  suiteSetup(async function () {
+  suiteSetup(async function()
+  {
     await poiService.deleteAllUsers();
     const returnedUser = await poiService.createUser(newUser);
     const response = await poiService.authenticate(newUser);
   });
 
-  suiteTeardown(async function() {
+  suiteTeardown(async function()
+  {
     await poiService.deleteAllUsers();
     poiService.clearAuth();
   });
 
-  setup(async function ()
+  setup(async function()
   {
     await poiService.deleteAllPois();
     await poiService.deleteAllCategories();
   });
 
-  teardown(async function (){});
+  teardown(async function()
+  {
+  });
 
 
-  test('create a poi', async function() {
+  test('create a poi', async function()
+  {
     const returnedCategory = await poiService.createCategory(newCategory);
     await poiService.createPoi(returnedCategory._id, pois[0]);
     const returnedPois = await poiService.getPois(returnedCategory._id);
@@ -43,22 +48,25 @@ suite('Poi Api Tests', function()
       'returned poi must be a superset of poi');
   });
 
-  test('create multiple pois', async function() {
+  test('create multiple pois', async function()
+  {
     const returnedCategory = await poiService.createCategory(newCategory);
-    for (var i = 0; i < pois.length; i++) {
+    for (var i = 0; i < pois.length; i++)
+    {
       await poiService.createPoi(returnedCategory._id, pois[i]);
     }
 
     const returnedPois = await poiService.getPois(returnedCategory._id);
     assert.equal(returnedPois.length, pois.length);
-    for (var i = 0; i < pois.length; i++) {
+    for (var i = 0; i < pois.length; i++)
+    {
       assert(_.some([returnedPois[i]], pois[i]),
         'returned pois must be a superset of poi');
     }
   });
 
 
-  test('get a single poi', async function ()
+  test('get a single poi', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
     const p1 = await poiService.createPoi(returnedCategory._id, pois[0]);
@@ -66,7 +74,7 @@ suite('Poi Api Tests', function()
     assert.deepEqual(p1, p2);
   });
 
-  test('get invalid poi', async function ()
+  test('get invalid poi', async function()
   {
     const p1 = await poiService.getPoi('1234');
     assert.isNull(p1);
@@ -75,21 +83,23 @@ suite('Poi Api Tests', function()
   });
 
   //Delete a single Poi with its id
-  test('delete a poi', async function ()
+  test('delete a poi', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
     let p = await poiService.createPoi(returnedCategory._id, pois[0]);
     assert(p._id != null);
     await poiService.deleteOnePoi(p._id);
     p = await poiService.getPoi(p._id);
-    assert(p==null);
+    assert(p == null);
   });
 
 
 //  Delete all Pois
-  test('delete all pois', async function() {
+  test('delete all pois', async function()
+  {
     const returnedCategory = await poiService.createCategory(newCategory);
-    for(let p of pois){
+    for (let p of pois)
+    {
       await poiService.createPoi(returnedCategory._id, p);
     }
     let allPois = await poiService.getPois();
@@ -100,10 +110,11 @@ suite('Poi Api Tests', function()
   });
 
 //  test to get all pois
-  test('get all pois', async function ()
+  test('get all pois', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
-    for(let p of pois){
+    for (let p of pois)
+    {
       await poiService.createPoi(returnedCategory._id, p);
     }
     const allPois = await poiService.getPois();
@@ -112,14 +123,15 @@ suite('Poi Api Tests', function()
 
 
 //  test to check tha the get method retrieves all pois
-  test('get pois detail', async function ()
+  test('get pois detail', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
-    for(let p of pois){
+    for (let p of pois)
+    {
       await poiService.createPoi(returnedCategory._id, p);
     }
     const allPois = await poiService.getPois();
-    for(var i=0; i<pois.length; i++)
+    for (var i = 0; i < pois.length; i++)
     {
       assert(_.some([allPois[i]], pois[i])),
         'returnedPois must be a superset of the newPoi'
@@ -127,13 +139,14 @@ suite('Poi Api Tests', function()
   });
 
 //  Test getting an empty array of pois
-  test('get all pois empty', async function ()
+  test('get all pois empty', async function()
   {
     const allPois = await poiService.getPois();
-    assert.equal(allPois.length,0);
+    assert.equal(allPois.length, 0);
   });
 
-  test('create a poi and check user', async function() {
+  test('create a poi and check user', async function()
+  {
     const returnedCategory = await poiService.createCategory(newCategory);
     await poiService.createPoi(returnedCategory._id, pois[0]);
     const returnedPois = await poiService.getPois();
@@ -141,5 +154,14 @@ suite('Poi Api Tests', function()
 
     const users = await poiService.getUsers();
     assert(_.some([users[0]], newUser), 'returnedUser must be a superset of newUser');
+  });
+
+  test('find poi by user id', async function()
+  {
+
+  });
+  test('find poi by category', async function()
+  {
+
   });
 })
