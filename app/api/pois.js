@@ -45,6 +45,19 @@ const Pois = {
     }
   },
 
+  // Find pois by user Id
+  findByUser: {
+    auth: {
+      strategy: 'jwt',
+    },
+    handler: async function(request, h){
+      const userId = utils.getUserIdFromRequest(request);
+      const pois = await Poi.find({user: userId});
+      return pois;
+    }
+  },
+
+
   // finds pois by the category id
   findByCategory: {
     auth: {

@@ -13,6 +13,7 @@ module.exports=[
   { method: 'POST', path: '/api/users/authenticate', config: Users.authenticate },
 
   { method: 'GET', path: '/api/pois', config: Pois.find },
+  { method: 'GET', path: '/api/pois/user', config: Pois.findByUser},
   { method: 'GET', path: '/api/pois/{id}', config: Pois.findOne },
   { method: 'GET', path: '/api/pois/{id}/category', config: Pois.findByCategory},
   { method: 'POST', path: '/api/categories/{catid}/locations/{locid}/pois', config: Pois.create},
