@@ -3,6 +3,7 @@
 const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
 const Category = require('../models/categories');
+const Location = require('../models/location');
 const utils = require('./utils');
 
 const Pois = {
@@ -57,11 +58,18 @@ const Pois = {
     {
       const userId = utils.getUserIdFromRequest(request);
       let poi = new Poi(request.payload);
-      const category = await Category.findOne({ _id: request.params.id });
+      const category = await Category.findOne({ _id: request.params.catid });
       if (!category)
       {
         return Boom.notFound('No Category with this id');
       }
+
+      const location = await Location.findOne({_id: request.params.locid});
+      if(!location)
+      {
+        return Boom.notFound('No location with this id');
+      }
+      poi.location = location._id;
       poi.category = category._id;
       poi.user = userId;
       poi = await poi.save();

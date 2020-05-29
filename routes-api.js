@@ -15,7 +15,7 @@ module.exports=[
   { method: 'GET', path: '/api/pois', config: Pois.find },
   { method: 'GET', path: '/api/pois/{id}', config: Pois.findOne },
   { method: 'GET', path: '/api/pois/{id}/category', config: Pois.findByCategory},
-  { method: 'POST', path: '/api/categories/{id}/pois', config: Pois.create},
+  { method: 'POST', path: '/api/categories/{catid}/locations/{locid}/pois', config: Pois.create},
   { method: 'DELETE', path: '/api/pois/{id}', config: Pois.deleteOne },
   { method: 'DELETE', path: '/api/pois', config: Pois.deleteAll },
 
