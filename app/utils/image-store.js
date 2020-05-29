@@ -47,7 +47,7 @@ const ImageStore = {
     {
         try
         {
-            const poi = await Poi.findById(poi_id);
+            // const poi = await Poi.findById(poi_id);
             let newImage;
             /* Check to see if there is an image and if there is
             upload it to cloudinary and create a new image in the
@@ -67,8 +67,8 @@ const ImageStore = {
             }
             /* Push a reference to the image id to its point of
             interest image array*/
-            poi.image.push(ObjectId(newImage._id));
-            poi.save();
+            // poi.image.push(ObjectId(newImage._id));
+            // poi.save();
         } catch (e)
         {
             Console.log("Uploading of Image error: " + e);
@@ -82,22 +82,22 @@ const ImageStore = {
         {
             const image_obj = await Image.findById(image_id).populate('poi').lean();
             const image_public_id = image_obj.public_id;
-            const poi_id = image_obj.poi._id.toString();
+            // const poi_id = image_obj.poi._id.toString();
 
             // Delete the objectId reference from the POI schema
-            await Poi.findByIdAndUpdate(
-                {"_id": poi_id}, // poi to delete from
-                {
-                    $pull: {image: {$in: [image_obj]}}
-                },
-                {safe: true},
-                function (err)
-                {
-                    if (err)
-                    {
-                        console.log(err);
-                    }
-                });
+            // await Poi.findByIdAndUpdate(
+            //     {"_id": poi_id}, // poi to delete from
+            //     {
+            //         $pull: {image: {$in: [image_obj]}}
+            //     },
+            //     {safe: true},
+            //     function (err)
+            //     {
+            //         if (err)
+            //         {
+            //             console.log(err);
+            //         }
+            //     });
 
             // Delete image document from MongoDB
             await Image.findByIdAndDelete(image_id);
@@ -109,7 +109,6 @@ const ImageStore = {
             console.log("Delete Image Error: " + e);
         }
     },
-
 };
 
 module.exports = ImageStore;

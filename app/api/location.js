@@ -1,16 +1,16 @@
 'use strict';
 
-const Category = require('../models/categories');
+const Location = require('../models/location');
 const Boom = require('@hapi/boom');
 
-const Categories = {
+const Locations = {
   find: {
     auth: {
       strategy: 'jwt',
     },
     handler: async function(request, h) {
-      const categories = await Category.find();
-      return categories;
+      const locations = await Location.find();
+      return locations;
     }
   },
   findOne: {
@@ -19,13 +19,13 @@ const Categories = {
     },
     handler: async function(request, h) {
       try {
-        const category = await Category.findOne({ _id: request.params.id });
-        if (!category) {
-          return Boom.notFound('No Category with this id');
+        const location = await Location.findOne({ _id: request.params.id });
+        if (!location) {
+          return Boom.notFound('No location with this id');
         }
-        return category;
+        return location;
       } catch (err) {
-        return Boom.notFound('No Category with this id');
+        return Boom.notFound('No location with this id');
       }
     }
   },
@@ -33,15 +33,14 @@ const Categories = {
   create: {
     auth: {
       strategy: 'jwt',
-      scope: 'admin'
     },
     handler: async function(request, h) {
-      const newCategory = new Category(request.payload);
-      const category = await newCategory.save();
-      if (category) {
-        return h.response(category).code(201);
+      const newLocation = new Location(request.payload);
+      const location = await newLocation.save();
+      if (location) {
+        return h.response(location).code(201);
       }
-      return Boom.badImplementation('error creating Category');
+      return Boom.badImplementation('error creating location');
     }
   },
 
@@ -50,7 +49,7 @@ const Categories = {
       strategy: 'jwt',
     },
     handler: async function(request, h) {
-      await Category.deleteMany({});
+      await Location.deleteMany({});
       return { success: true };
     }
   },
@@ -59,7 +58,7 @@ const Categories = {
       strategy: 'jwt',
     },
     handler: async function(request, h) {
-      const response = await Category.deleteOne({ _id: request.params.id });
+      const response = await Location.deleteOne({ _id: request.params.id });
       if (response.deletedCount == 1) {
         return { success: true };
       }
@@ -69,4 +68,4 @@ const Categories = {
 
 };
 
-module.exports = Categories;
+module.exports = Locations;

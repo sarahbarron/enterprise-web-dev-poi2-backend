@@ -31,14 +31,14 @@
         </div>
     </section>
 <!--    If there are no images don't show the images section-->
-    {{#if poi.image}}
+    {{#if image}}
     <section class="ui 15 column middle aligned grid raised segment">
         <div class="row">
             <div class="column two wide"><i class="teal huge image icon"></i></div>
             <div class="column three wide"><h2>Images</h2></div>
         </div>
         <div class="row">
-            {{#each poi.image}}
+            {{#each image}}
                 {{> image-card}}
             {{/each}}
         </div>

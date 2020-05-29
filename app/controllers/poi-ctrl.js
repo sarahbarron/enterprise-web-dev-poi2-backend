@@ -116,7 +116,7 @@ const Poi = {
                 });
                 await newPoi.save();
 
-                // //Upload image to cloudinary & save details to DB
+                //Upload image to cloudinary & save details to DB
                 const image_file = data.image;
                 await ImageStore.uploadImage(image_file, newPoi._id);
 
@@ -162,7 +162,8 @@ const Poi = {
             try
             {
                 const poi_id = request.params.id;
-                const poi = await PointOfInterest.findById(poi_id).populate('image').populate('category').lean().sort('-category');
+                const poi = await PointOfInterest.findById(poi_id).populate('category').lean().sort('-category');
+                const image = await Image.find({poi: poi_id}).lean();
                 const user_id = request.auth.credentials.id;
                 const user = await User.findById(user_id).lean();
                 const scope = user.scope;
@@ -172,6 +173,7 @@ const Poi = {
                 return h.view('update-poi', {
                     title: 'Update POI',
                     poi: poi,
+                    image:image,
                     isadmin: isadmin,
                     categories: category
                 });
@@ -252,15 +254,19 @@ const Poi = {
             try
             {
                 const poi_id = request.params.id;
-                const poi = await PointOfInterest.findById(poi_id).populate('image').populate('category').lean();
+                const poi = await PointOfInterest.findById(poi_id).populate('category').lean();
+                const image = await Image.find({poi: poi_id}).lean();
+
                 const user_id = request.auth.credentials.id;
                 const user = await User.findById(user_id).lean();
+
                 const scope = user.scope;
                 const isadmin = Utils.isAdmin(scope);
 
                 return h.view('view-poi', {
                     title: 'View Single POI',
                     poi: poi,
+                    image: image,
                     isadmin: isadmin
                 });
             } catch (err)

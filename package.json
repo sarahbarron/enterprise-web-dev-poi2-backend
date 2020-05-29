@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha",
+    "coverage": "nyc npm run test"
   },
   "author": "Sarah Barron",
   "license": "ISC",
@@ -20,11 +21,18 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "handlebars": "^4.7.3",
+    "hapi-auth-jwt2": "^10.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
     "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^5.9.2",
     "util": "^0.12.2"
   },
   "devDependencies": {
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
     "prettier": "^1.19.1"
   },
   "prettier": {
