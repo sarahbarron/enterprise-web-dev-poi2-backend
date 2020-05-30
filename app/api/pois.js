@@ -16,7 +16,7 @@ const Pois = {
     handler: async function(request, h){
       try
       {
-        const pois = await Poi.find().populate('location').lean();
+        const pois = await Poi.find().populate('category').populate('location').lean();
         return pois;
       }catch (err)
       {
@@ -33,7 +33,7 @@ const Pois = {
     },
     handler: async function(request, h){
       try{
-        const poi = await Poi.findOne({_id: request.params.id});
+        const poi = await Poi.findOne({_id: request.params.id}).populate('category').populate('location').lean();
         if(!poi)
         {
           return Boom.notFound('No Pois with this Id');
