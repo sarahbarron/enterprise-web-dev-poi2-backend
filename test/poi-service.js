@@ -145,10 +145,10 @@ class PoiService {
     }
   }
 
-  async createPoi(id, newPoi) {
+  async createPoi(catid, locid, newPoi) {
     try
     {
-      const response = await axios.post(this.baseUrl + '/api/categories/' + id + '/pois', newPoi);
+      const response = await axios.post(this.baseUrl + '/api/categories/'+catid+'/locations/'+locid+'/pois', newPoi);
       return response.data;
     }catch (e){
       return null;

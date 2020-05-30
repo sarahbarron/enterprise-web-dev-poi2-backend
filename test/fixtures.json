@@ -52,20 +52,20 @@
 
   "location": [
     {
-      "latitude": 52.279270,
-      "longitude": -7.150474
+      "lat": 52.279270,
+      "lng": -7.150474
     },
     {
-      "latitude": 52.241090,
-      "longitude": -7.219084
+      "lat": 52.241090,
+      "lng": -7.219084
     },
     {
-      "latitude": 52.246973,
-      "longitude": -7.246926
+      "lat": 52.246973,
+      "lng": -7.246926
     },
     {
-      "longitude": -7.399,
-      "latitude": 52.1079
+      "lng": -7.399,
+      "lat": 52.1079
     }
   ],
   "poi": [
@@ -94,8 +94,8 @@
   },
 
   "newLocation": {
-    "longitude": -7.399,
-    "latitude": 52.1079
+    "lng": -7.399,
+    "lat": 52.1079
   },
   "newCategory": {
     "name": "New Category"

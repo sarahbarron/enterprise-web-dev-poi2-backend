@@ -32,8 +32,7 @@ const Categories = {
 
   create: {
     auth: {
-      strategy: 'jwt',
-      scope: 'admin'
+      strategy: 'jwt'
     },
     handler: async function(request, h) {
       const newCategory = new Category(request.payload);

@@ -52,7 +52,7 @@ const Pois = {
     },
     handler: async function(request, h){
       const userId = utils.getUserIdFromRequest(request);
-      const pois = await Poi.find({user: userId});
+      const pois = await Poi.find({user: userId}).populate('location').populate('categories').lean();
       return pois;
     }
   },
@@ -64,7 +64,7 @@ const Pois = {
       strategy: 'jwt',
     },
     handler: async function(request, h){
-      const pois = await Poi.find({category: request.params.id});
+      const pois = await Poi.find({category: request.params.id}).populate('location').populate('categories').lean();
       return pois;
     }
   },
