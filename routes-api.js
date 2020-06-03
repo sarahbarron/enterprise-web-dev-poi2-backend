@@ -16,9 +16,10 @@ module.exports=[
   { method: 'GET', path: '/api/pois/user', config: Pois.findByUser},
   { method: 'GET', path: '/api/pois/{id}', config: Pois.findOne },
   { method: 'GET', path: '/api/pois/{id}/category', config: Pois.findByCategory},
-  { method: 'POST', path: '/api/categories/{catid}/locations/{locid}/pois', config: Pois.create},
+  { method: 'POST', path: '/api/categories/{catid}/locations/{locid}/images/{imgid}/pois', config: Pois.create},
   { method: 'DELETE', path: '/api/pois/{id}', config: Pois.deleteOne },
   { method: 'DELETE', path: '/api/pois', config: Pois.deleteAll },
+  { method: 'POST', path: '/api/pois/addimage', config: Pois.addImage},
 
   { method: 'GET', path: '/api/categories', config: Categories.find },
   { method: 'GET', path: '/api/categories/{id}', config: Categories.findOne },

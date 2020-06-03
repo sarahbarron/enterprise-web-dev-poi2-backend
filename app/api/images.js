@@ -2,7 +2,7 @@
 
 const Image = require('../models/image');
 const Boom = require('@hapi/boom');
-
+const Utils = require('../utils/image-store');
 const Images = {
   find: {
     auth: false,
@@ -25,6 +25,7 @@ const Images = {
       }
     }
   },
+
 
   create: {
     auth: false,

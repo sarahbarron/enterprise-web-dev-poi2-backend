@@ -4,7 +4,9 @@ const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
 const Category = require('../models/categories');
 const Location = require('../models/location');
+const Image = require('../models/image');
 const utils = require('./utils');
+const ObjectId = require('mongodb').ObjectID;
 
 const Pois = {
 
@@ -16,7 +18,7 @@ const Pois = {
     handler: async function(request, h){
       try
       {
-        const pois = await Poi.find().populate('category').populate('location').lean();
+        const pois = await Poi.find().populate('category').populate('location').populate('image').lean();
         return pois;
       }catch (err)
       {
@@ -33,7 +35,7 @@ const Pois = {
     },
     handler: async function(request, h){
       try{
-        const poi = await Poi.findOne({_id: request.params.id}).populate('category').populate('location').lean();
+        const poi = await Poi.findOne({_id: request.params.id}).populate('category').populate('location').populate('image').lean();
         if(!poi)
         {
           return Boom.notFound('No Pois with this Id');
@@ -52,7 +54,7 @@ const Pois = {
     },
     handler: async function(request, h){
       const userId = utils.getUserIdFromRequest(request);
-      const pois = await Poi.find({user: userId}).populate('location').populate('category').lean();
+      const pois = await Poi.find({user: userId}).populate('location').populate('category').populate('image').lean();
       return pois;
     }
   },
@@ -64,7 +66,7 @@ const Pois = {
       strategy: 'jwt',
     },
     handler: async function(request, h){
-      const pois = await Poi.find({category: request.params.id}).populate('location').populate('category').lean();
+      const pois = await Poi.find({category: request.params.id}).populate('location').populate('category').populate('image').lean();
       return pois;
     }
   },
@@ -78,10 +80,17 @@ const Pois = {
     {
       const userId = utils.getUserIdFromRequest(request);
       let poi = new Poi(request.payload);
+
       const category = await Category.findOne({ _id: request.params.catid });
       if (!category)
       {
         return Boom.notFound('No Category with this id');
+      }
+
+      const image = await Image.findOne({_id: request.params.imgid});
+      if(!image)
+      {
+        return Boom.notFound('No image with this id');
       }
 
       const location = await Location.findOne({_id: request.params.locid});
@@ -91,8 +100,23 @@ const Pois = {
       }
       poi.location = location._id;
       poi.category = category._id;
+      poi.image = image._id;
       poi.user = userId;
       poi = await poi.save();
+      return poi;
+    }
+  },
+
+  addImage: {
+    auth: {
+      strategy: 'jwt',
+    },
+    handler: async function(request, h)
+    {
+      let poi = await Poi.findOne({_id: request.payload.poi_id});
+      poi.image.push(ObjectId(request.payload.img_id));
+      await poi.save();
+      poi = await Poi.findOne({_id: request.payload.poi_id}).populate("category").populate("location").populate("image").lean();
       return poi;
     }
   },

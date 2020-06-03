@@ -1,175 +1,4 @@
 {
-
-  "image": {
-    "_model": "Image",
-    "ballydawn1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704020/ballydawnbay1.jpg",
-      "public_id": "ballydawnbay1"
-    },
-    "ballydawn2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711360/ballydawn2.jpg",
-      "public_id": "ballydawn2"
-    },
-    "ballydawn3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711348/ballydawn3.jpg",
-      "public_id": "ballydawnbay3"
-    },
-    "achill1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711297/achill1.jpg",
-      "public_id": "achill1"
-    },
-    "achill2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711188/achill2.jpg",
-      "public_id": "achill2"
-    },
-    "achill3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711175/achill3.jpg",
-      "public_id": "achill3"
-    },
-    "achill4": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711202/achill4.jpg",
-      "public_id": "achill4"
-    },
-    "battle1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711158/battleofboyne1.jpg",
-      "public_id": "battleoftheboyne1"
-    },
-    "battle2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711148/battleofboyne2.jpg",
-      "public_id": "battleoftheboyne2"
-    },
-    "battle3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711139/battleofboyne3.jpg",
-      "public_id": "battleoftheboyne3"
-    },
-    "canal1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711011/boylecanal1.jpg",
-      "public_id": "boynecanal1"
-    },
-    "canal2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711000/boylecanal2.jpg",
-      "public_id": "boynecanal2"
-    },
-    "canal3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710974/boylecanal3.jpg",
-      "public_id": "boynecanal3"
-    },
-    "clonea1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711287/clonea1.jpg",
-      "public_id": "clonea1"
-    },
-    "clonea2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711276/clonea2.jpg",
-      "public_id": "clonea2"
-    },
-    "dominic1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711376/dominicspark1.jpg",
-      "public_id": "dominicspark1"
-    },
-    "dominic2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711387/dominicspark2.jpg",
-      "public_id": "dominicspark2"
-    },
-    "durrow1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711676/durrow1.jpg",
-      "public_id": "durrow1"
-    },
-    "durrow2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711652/durrow2.jpg",
-      "public_id": "durrow2"
-    },
-    "durrow3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711639/durrow3.jpg",
-      "public_id": "durrow3"
-    },
-    "garrarus1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710875/garrarus1.jpg",
-      "public_id": "garrarus1"
-    },
-    "garrarus2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710893/garrarus2.jpg",
-      "public_id": "garrarus2"
-    },
-    "garrarus3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710863/garrarus3.jpg",
-      "public_id": "garrarus3"
-    },
-    "congrave1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711625/mtcongrave1.jpg",
-      "public_id": "mtcongrave1"
-    },
-
-    "congrave2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711506/mtcongrave2.jpg",
-      "public_id": "mtcongrave2"
-    },
-    "congrave3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711496/mtcongrave3.jpg",
-      "public_id": "mtcongrave3"
-    },
-    "mulranny1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711474/mulranny1.jpg",
-      "public_id": "mulranny1"
-    },
-    "mulranny2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711463/mulranny2.jpg",
-      "public_id": "mulranny2"
-    },
-    "mulranny3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711447/mulranny3.jpg",
-      "public_id": "mulranny3"
-    },
-    "railway1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711248/railway1.jpg",
-      "public_id": "railway1"
-    },
-    "railway2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711239/railway2.jpg",
-      "public_id": "railway2"
-    },
-    "railway3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711225/railway3.jpg",
-      "public_id": "railway3"
-    },
-    "stradbally1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711121/stradbally1.jpg",
-      "public_id": "stradbally1"
-    },
-    "stradbally2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711109/stradbally2.jpg",
-      "public_id": "stradbally2"
-    },
-    "stradbally3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711080/stradbally3.jpg",
-      "public_id": "stradbally3"
-    },
-    "suir1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711055/suirbridge1.jpg",
-      "public_id": "suir1"
-    },
-    "suir2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711039/suirbridge2.jpg",
-      "public_id": "suir2"
-    },
-    "suir3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711029/suirbridge3.jpg",
-      "public_id": "suir3"
-    },
-    "tankardstown1": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710932/tankardstown1.jpg",
-      "public_id": "tankardstown1"
-    },
-    "tankardstown2": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710922/tankardstown2.jpg",
-      "public_id": "tankardstown2"
-
-    },
-    "tankardstown3": {
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710912/tankardstown3.jpg",
-      "public_id": "tankardstown3"
-
-    }
-  },
   "Location": {
     "_model": "Location",
     "suir": {
@@ -281,7 +110,7 @@
       "location": "->Location.suir",
       "user": "->users.marge",
       "category": "->category.waterford",
-      "image": ["->image.suir1", "->image.suir2", "->image.suir3"]
+      "image": ["->image.suir1, image.suir2, image.suir3"]
     },
     "congrave": {
       "name": "Mount Congreve",
@@ -289,7 +118,7 @@
       "location": "->Location.congrave",
       "user": "->users.bart",
       "category": "->category.waterford",
-      "image": ["->image.congrave1", "->image.congrave2", "->image.congrave3"]
+      "image": ["->image.congrave1, image.congrave2, image.congrave3"]
     },
     "railway": {
       "name": "Suir Valley Railway",
@@ -297,7 +126,7 @@
       "location": "->Location.railway",
       "user": "->users.homer",
       "category": "->category.waterford",
-      "image": ["->image.railway1", "->image.railway2", "->image.railway3"]
+      "image": ["->image.railway1, image.railway2, image.railway3"]
     },
     "durrow": {
       "name": "Durrow Viaduct",
@@ -305,7 +134,7 @@
       "location": "->Location.durrow",
       "user": "->users.bart",
       "category": "->category.waterford",
-      "image": ["->image.durrow1", "->image.durrow2", "->image.durrow3"]
+      "image": ["->image.durrow1, ->image.durrow2, ->image.durrow3"]
     },
     "clonea": {
       "name": "Clonea Strand",
@@ -313,7 +142,7 @@
       "location": "->Location.clonea",
       "user": "->users.homer",
       "category": "->category.waterford",
-      "image": ["->image.clonea1", "->image.clonea2"]
+      "image": ["->image.clonea1, ->image.clonea2"]
     },
     "achill": {
       "name": "Achill",
@@ -321,7 +150,7 @@
       "location": "->Location.achill",
       "user": "->users.homer",
       "category": "->category.western",
-      "image": ["->image.achill1", "->image.achill2", "->image.achill3", "->image.achill4"]
+      "image": ["->image.achill1, ->image.achill2, ->image.achill3, ->image.achill4"]
     },
     "mulranny": {
       "name": "Mulranny",
@@ -329,7 +158,7 @@
       "location": "->Location.mulranny",
       "user": "->users.bart",
       "category": "->category.western",
-      "image": ["->image.mulranny1", "->image.mulranny2", "->image.mulranny3"]
+      "image": ["->image.mulranny1, ->image.mulranny2, ->image.mulranny3"]
     },
     "dominic": {
       "name": "Dominics Park",
@@ -337,7 +166,7 @@
       "location": "->Location.dominic",
       "user": "->users.bart",
       "category": "->category.boyne",
-      "image": ["->image.dominic1", "->image.dominic2"]
+      "image": ["->image.dominic1, ->image.dominic2"]
     },
     "canal": {
       "name": "Boyne Canal",
@@ -345,7 +174,7 @@
       "location": "->Location.canal",
       "user": "->users.marge",
       "category": "->category.boyne",
-      "image": ["->image.canal1", "->image.canal2", "->image.canal3"]
+      "image": ["->image.canal1, ->image.canal2, ->image.canal3"]
     },
     "battle": {
       "name": "Battle of the Boyne Visitor Centre",
@@ -353,7 +182,7 @@
       "location": "->Location.battle",
       "user": "->users.homer",
       "category": "->category.boyne",
-      "image": ["->image.battle1", "->image.battle2", "->image.battle3"]
+      "image": ["->image.battle1, ->image.battle2, ->image.battle3"]
     },
     "garrarus": {
       "name": "Garrarus Strand",
@@ -361,7 +190,7 @@
       "location": "->Location.garrarus",
       "user": "->users.marge",
       "category": "->category.copper",
-      "image": ["->image.garrarus1", "->image.garrarus2", "->image.garrarus3"]
+      "image": ["->image.garrarus1, ->image.garrarus2, ->image.garrarus3"]
 
     },
     "tankardstown": {
@@ -370,7 +199,7 @@
       "location": "->Location.tankardstown",
       "user": "->users.marge",
       "category": "->category.copper",
-      "image": ["->image.tankardstown1", "->image.tankardstown2", "->image.tankardstown3"]
+      "image": ["->image.tankardstown1, ->image.tankardstown2, ->image.tankardstown3"]
     },
     "ballydawn": {
       "name": "Ballydawn Bay",
@@ -378,7 +207,7 @@
       "location": "->Location.ballydawn",
       "user": "->users.bart",
       "category": "->category.copper",
-      "image": ["->image.ballydawn1", "->image.ballydawn2", "->image.ballydawn3"]
+      "image": ["->image.ballydawn1, ->image.ballydawn2, ->image.ballydawn3"]
     },
     "stradbally": {
       "name": "Stradbally Cove",
@@ -386,7 +215,217 @@
       "location": "->Location.stradbally",
       "user": "->users.homer",
       "category": "->category.copper",
-      "image": ["->image.stradbally1", "->image.stradbally2", "->image.stradbally3"]
+      "image": ["->image.stradbally1, ->image.stradbally2, ->image.stradbally3"]
+    }
+  },
+
+  "image": {
+    "_model": "Image",
+    "ballydawn1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704020/ballydawnbay1.jpg",
+      "public_id": "ballydawnbay1",
+      "poi": "->poi.ballydawn"
+    },
+    "ballydawn2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711360/ballydawn2.jpg",
+      "public_id": "ballydawn2",
+      "poi": "->poi.ballydawn"
+    },
+    "ballydawn3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711348/ballydawn3.jpg",
+      "public_id": "ballydawnbay3",
+      "poi": "->poi.ballydawn"
+    },
+    "achill1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711297/achill1.jpg",
+      "public_id": "achill1",
+      "poi": "->poi.achill"
+    },
+    "achill2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711188/achill2.jpg",
+      "public_id": "achill2" ,
+      "poi": "->poi.achill"
+    },
+    "achill3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711175/achill3.jpg",
+      "public_id": "achill3",
+      "poi": "->poi.achill"
+    },
+    "achill4": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711202/achill4.jpg",
+      "public_id": "achill4",
+      "poi": "->poi.achill"
+    },
+    "battle1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711158/battleofboyne1.jpg",
+      "public_id": "battleoftheboyne1",
+      "poi": "->poi.battle"
+    },
+    "battle2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711148/battleofboyne2.jpg",
+      "public_id": "battleoftheboyne2",
+      "poi": "->poi.battle"
+    },
+    "battle3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711139/battleofboyne3.jpg",
+      "public_id": "battleoftheboyne3",
+      "poi": "->poi.battle"
+    },
+    "canal1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711011/boylecanal1.jpg",
+      "public_id": "boynecanal1",
+      "poi": "->poi.canal"
+    },
+    "canal2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711000/boylecanal2.jpg",
+      "public_id": "boynecanal2",
+      "poi": "->poi.canal"
+    },
+    "canal3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710974/boylecanal3.jpg",
+      "public_id": "boynecanal3",
+      "poi": "->poi.canal"
+    },
+    "clonea1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711287/clonea1.jpg",
+      "public_id": "clonea1",
+      "poi": "->poi.clonea"
+    },
+    "clonea2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711276/clonea2.jpg",
+      "public_id": "clonea2",
+      "poi": "->poi.clonea"
+    },
+    "dominic1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711376/dominicspark1.jpg",
+      "public_id": "dominicspark1",
+      "poi": "->poi.dominic"
+    },
+    "dominic2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711387/dominicspark2.jpg",
+      "public_id": "dominicspark2",
+      "poi": "->poi.dominic"
+    },
+    "durrow1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711676/durrow1.jpg",
+      "public_id": "durrow1",
+      "poi": "->poi.durrow"
+    },
+    "durrow2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711652/durrow2.jpg",
+      "public_id": "durrow2",
+      "poi": "->poi.durrow"
+    },
+    "durrow3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711639/durrow3.jpg",
+      "public_id": "durrow3",
+      "poi": "->poi.durrow"
+    },
+    "garrarus1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710875/garrarus1.jpg",
+      "public_id": "garrarus1",
+      "poi": "->poi.garrarus"
+    },
+    "garrarus2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710893/garrarus2.jpg",
+      "public_id": "garrarus2",
+      "poi": "->poi.garrarus"
+    },
+    "garrarus3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710863/garrarus3.jpg",
+      "public_id": "garrarus3",
+      "poi": "->poi.garrarus"
+    },
+    "congrave1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711625/mtcongrave1.jpg",
+      "public_id": "mtcongrave1",
+      "poi": "->poi.congrave"
+    },
+
+    "congrave2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711506/mtcongrave2.jpg",
+      "public_id": "mtcongrave2",
+      "poi": "->poi.congrave"
+    },
+    "congrave3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711496/mtcongrave3.jpg",
+      "public_id": "mtcongrave3",
+      "poi": "->poi.congrave"
+    },
+    "mulranny1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711474/mulranny1.jpg",
+      "public_id": "mulranny1",
+      "poi": "->poi.mulranny"
+    },
+    "mulranny2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711463/mulranny2.jpg",
+      "public_id": "mulranny2",
+      "poi": "->poi.mulranny"
+    },
+    "mulranny3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711447/mulranny3.jpg",
+      "public_id": "mulranny3",
+      "poi": "->poi.mulranny"
+    },
+    "railway1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711248/railway1.jpg",
+      "public_id": "railway1",
+      "poi": "->poi.railway"
+    },
+    "railway2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711239/railway2.jpg",
+      "public_id": "railway2",
+      "poi": "->poi.railway"
+    },
+    "railway3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711225/railway3.jpg",
+      "public_id": "railway3",
+      "poi": "->poi.railway"
+    },
+    "stradbally1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711121/stradbally1.jpg",
+      "public_id": "stradbally1",
+      "poi": "->poi.stradbally"
+    },
+    "stradbally2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711109/stradbally2.jpg",
+      "public_id": "stradbally2",
+      "poi": "->poi.stradbally"
+    },
+    "stradbally3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711080/stradbally3.jpg",
+      "public_id": "stradbally3",
+      "poi": "->poi.stradbally"
+    },
+    "suir1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711055/suirbridge1.jpg",
+      "public_id": "suir1",
+      "poi": "->poi.suir"
+    },
+    "suir2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711039/suirbridge2.jpg",
+      "public_id": "suir2",
+      "poi": "->poi.suir"
+    },
+    "suir3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583711029/suirbridge3.jpg",
+      "public_id": "suir3",
+      "poi": "->poi.suir"
+    },
+    "tankardstown1": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710932/tankardstown1.jpg",
+      "public_id": "tankardstown1",
+      "poi": "->poi.tankardstown"
+    },
+    "tankardstown2": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710922/tankardstown2.jpg",
+      "public_id": "tankardstown2",
+      "poi": "->poi.tankardstown"
+    },
+    "tankardstown3": {
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1583710912/tankardstown3.jpg",
+      "public_id": "tankardstown3",
+      "poi": "->poi.tankardstown"
     }
   }
 }

@@ -23,7 +23,11 @@ const PoiSchema = new Schema({
     category: {
         type: Schema.Types.ObjectID,
         ref: 'Category',
-    }
+    },
+    image: [{
+        type: Schema.Types.ObjectID,
+        ref: 'Image'
+    }]
 });
 
 module.exports = Mongoose.model('Poi', PoiSchema);

@@ -254,19 +254,15 @@ const Poi = {
             try
             {
                 const poi_id = request.params.id;
-                const poi = await PointOfInterest.findById(poi_id).populate('category').lean();
-                const image = await Image.find({poi: poi_id}).lean();
-
+                const poi = await PointOfInterest.findById(poi_id).populate('image').populate('category').lean();
                 const user_id = request.auth.credentials.id;
                 const user = await User.findById(user_id).lean();
-
                 const scope = user.scope;
                 const isadmin = Utils.isAdmin(scope);
 
                 return h.view('view-poi', {
                     title: 'View Single POI',
                     poi: poi,
-                    image: image,
                     isadmin: isadmin
                 });
             } catch (err)
