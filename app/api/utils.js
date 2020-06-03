@@ -42,4 +42,3 @@ exports.getUserIdFromRequest = function(request) {
   }
   return userId;
 };
-
