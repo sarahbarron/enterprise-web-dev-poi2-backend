@@ -113,10 +113,11 @@ const Pois = {
     },
     handler: async function(request, h)
     {
-      const poi = await Poi.findOne({_id: request.payload.poi_id});
+      let poi = await Poi.findOne({_id: request.payload.poi_id});
       poi.image.push(ObjectId(request.payload.img_id));
-      const response = await poi.save();
-      return response;
+      await poi.save();
+      poi = await Poi.findOne({_id: request.payload.poi_id}).populate("category").populate("location").populate("image").lean();
+      return poi;
     }
   },
 
