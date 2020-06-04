@@ -166,12 +166,12 @@ suite('Poi Api Tests', function()
     assert(_.some([users[0]], newUser), 'returnedUser must be a superset of newUser');
   });
 
-  test('find poi by user id', async function()
-  {
-
-  });
-  test('find poi by category', async function()
-  {
-
-  });
+  // test('find poi by user id', async function()
+  // {
+  //
+  // });
+  // test('find poi by category', async function()
+  // {
+  //
+  // });
 })

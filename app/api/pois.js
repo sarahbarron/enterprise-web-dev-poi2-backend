@@ -15,12 +15,13 @@ const Pois = {
     auth: {
       strategy: 'jwt',
     },
-    handler: async function(request, h){
+    handler: async function(request, h)
+    {
       try
       {
         const pois = await Poi.find().populate('category').populate('location').populate('image').lean();
         return pois;
-      }catch (err)
+      } catch (err)
       {
         return Boom.badImplementation('error fetching');
       }
@@ -29,19 +30,22 @@ const Pois = {
   },
 
   // Find One Pois
-  findOne:{
+  findOne: {
     auth: {
       strategy: 'jwt',
     },
-    handler: async function(request, h){
-      try{
-        const poi = await Poi.findOne({_id: request.params.id}).populate('category').populate('location').populate('image').lean();
-        if(!poi)
+    handler: async function(request, h)
+    {
+      try
+      {
+        const poi = await Poi.findOne({ _id: request.params.id }).populate('category').populate('location').populate('image').lean();
+        if (!poi)
         {
           return Boom.notFound('No Pois with this Id');
         }
         return poi;
-      }catch(err){
+      } catch (err)
+      {
         return Boom.notFound('No Pois with this Id');
       }
     }
@@ -52,9 +56,10 @@ const Pois = {
     auth: {
       strategy: 'jwt',
     },
-    handler: async function(request, h){
+    handler: async function(request, h)
+    {
       const userId = utils.getUserIdFromRequest(request);
-      const pois = await Poi.find({user: userId}).populate('location').populate('category').populate('image').lean();
+      const pois = await Poi.find({ user: userId }).populate('location').populate('category').populate('image').lean();
       return pois;
     }
   },
@@ -65,8 +70,9 @@ const Pois = {
     auth: {
       strategy: 'jwt',
     },
-    handler: async function(request, h){
-      const pois = await Poi.find({category: request.params.id}).populate('location').populate('category').populate('image').lean();
+    handler: async function(request, h)
+    {
+      const pois = await Poi.find({ category: request.params.id }).populate('location').populate('category').populate('image').lean();
       return pois;
     }
   },
@@ -81,26 +87,32 @@ const Pois = {
       const userId = utils.getUserIdFromRequest(request);
       let poi = new Poi(request.payload);
 
-      const category = await Category.findOne({ _id: request.params.catid });
+      let image = await Image.findOne({ _id: request.payload.image._id });
+      if (!image)
+      {
+        poi.image = null;
+      }
+      else
+      {
+        poi.image = image._id;
+      }
+
+      let location = await Location.findOne({ _id: request.payload.location._id });
+      if (!location)
+      {
+        poi.location = null;
+
+      }
+      else
+      {
+        poi.location = location._id;
+      }
+      const category = await Category.findOne({ _id: request.params.id });
       if (!category)
       {
         return Boom.notFound('No Category with this id');
       }
-
-      const image = await Image.findOne({_id: request.params.imgid});
-      if(!image)
-      {
-        return Boom.notFound('No image with this id');
-      }
-
-      const location = await Location.findOne({_id: request.params.locid});
-      if(!location)
-      {
-        return Boom.notFound('No location with this id');
-      }
-      poi.location = location._id;
       poi.category = category._id;
-      poi.image = image._id;
       poi.user = userId;
       poi = await poi.save();
       return poi;
@@ -113,39 +125,63 @@ const Pois = {
     },
     handler: async function(request, h)
     {
-      let poi = await Poi.findOne({_id: request.payload.poi_id});
+      let poi = await Poi.findOne({ _id: request.payload.poi_id });
       poi.image.push(ObjectId(request.payload.img_id));
       await poi.save();
-      poi = await Poi.findOne({_id: request.payload.poi_id}).populate("category").populate("location").populate("image").lean();
+      poi = await Poi.findOne({ _id: request.payload.poi_id }).populate("category").populate("location").populate("image").lean();
       return poi;
     }
   },
 
 //  delete all pois
-  deleteAll:{
+  deleteAll: {
     auth: {
       strategy: 'jwt',
     },
-    handler: async function(request, h){
+    handler: async function(request, h)
+    {
       await Poi.deleteMany({});
-      return {success: true};
+      return { success: true };
     }
   },
 
 //  delete one
-  deleteOne:{
+  deleteOne: {
     auth: {
       strategy: 'jwt',
     },
-    handler: async function(request, h){
-      const response = await Poi.deleteOne({_id: request.params.id});
+    handler: async function(request, h)
+    {
+      const response = await Poi.deleteOne({ _id: request.params.id });
       if (response.deletedCount == 1)
       {
-        return {success: true};
+        return { success: true };
       }
       return Boom.notFound('Id not found');
     }
+  },
+
+  update: {
+    auth: {
+      strategy: 'jwt',
+    },
+    handler: async function(request, h)
+    {
+      try
+        {
+          const userEdit = request.payload;
+          const poi_id = request.params.id;
+          const poi = await Poi.findById(poi_id);
+          poi.name = userEdit.name;
+          poi.category = userEdit.category;
+          poi.description = userEdit.description;
+          await poi.save();
+          return poi;
+        } catch (err)
+        {
+          return h.view('home', {errors: [{message: err.message}]});
+        }
+    }
   }
 }
-
 module.exports = Pois;

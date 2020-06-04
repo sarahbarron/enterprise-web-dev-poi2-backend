@@ -64,6 +64,21 @@ const Locations = {
       }
       return Boom.notFound('id not found');
     }
+  },
+
+  update:{
+    auth:{
+      strategy: 'jwt'
+    },
+    handler: async function(request, h){
+      const userEdit = request.payload;
+      const location = await Location.findById(request.params.id);
+      location.lat = userEdit.lat;
+      location.lng = userEdit.lng;
+      await location.save();
+      return location;
+    }
+
   }
 
 };
