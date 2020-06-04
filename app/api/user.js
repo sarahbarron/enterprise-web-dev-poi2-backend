@@ -3,6 +3,7 @@
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
 const utils = require('./utils');
+const Joi = require('@hapi/joi');
 
 const Users = {
 
@@ -35,6 +36,21 @@ const Users = {
 
   create: {
     auth: false,
+    // Joi Validation of fields
+    validate: {
+      payload: {
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string()
+          .email()
+          .required(),
+        password: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false
+      },
+    },
+
     handler: async function(request, h) {
       const newUser = new User(request.payload);
       const user = await newUser.save();
@@ -70,6 +86,19 @@ const Users = {
 
   authenticate: {
     auth: false,
+
+    // Joi Validation of fields
+    validate: {
+      payload: {
+        email: Joi.string()
+          .email()
+          .required(),
+        password: Joi.string().required(),
+      },
+      options: {
+        abortEarly: false
+      },
+    },
     handler: async function (request, h) {
       try {
         const user = await User.findOne({ email: request.payload.email });

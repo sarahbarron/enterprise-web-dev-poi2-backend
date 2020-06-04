@@ -7,6 +7,7 @@ const Location = require('../models/location');
 const Image = require('../models/image');
 const utils = require('./utils');
 const ObjectId = require('mongodb').ObjectID;
+const Joi = require('@hapi/joi');
 
 const Pois = {
 
@@ -82,38 +83,51 @@ const Pois = {
     auth: {
       strategy: 'jwt',
     },
+
+    /* Joi validation of fields if any errors return a boom
+      message to the user/admin */
+    validate: {
+      payload: {
+        name: Joi.string().required(),
+        category: Joi.object().required(),
+        description: Joi.string().allow('').allow(null),
+        location: Joi.object().required(),
+        image: Joi.object().required()
+      },
+      options: {
+        abortEarly: false
+      },
+    },
+
     handler: async function(request, h)
     {
-      const userId = utils.getUserIdFromRequest(request);
       let poi = new Poi(request.payload);
+      const userId = utils.getUserIdFromRequest(request);
+      poi.user = userId;
 
       let image = await Image.findOne({ _id: request.payload.image._id });
       if (!image)
       {
-        poi.image = null;
+        return Boom.notFound('No Category with this id');
       }
-      else
-      {
-        poi.image = image._id;
-      }
+      poi.image = image._id;
+
 
       let location = await Location.findOne({ _id: request.payload.location._id });
       if (!location)
       {
-        poi.location = null;
+        return Boom.notFound('No Location with this id');
+      }
+      poi.location = location._id;
 
-      }
-      else
-      {
-        poi.location = location._id;
-      }
       const category = await Category.findOne({ _id: request.params.id });
       if (!category)
       {
         return Boom.notFound('No Category with this id');
       }
       poi.category = category._id;
-      poi.user = userId;
+
+
       poi = await poi.save();
       return poi;
     }
@@ -165,6 +179,8 @@ const Pois = {
     auth: {
       strategy: 'jwt',
     },
+
+
     handler: async function(request, h)
     {
       try
