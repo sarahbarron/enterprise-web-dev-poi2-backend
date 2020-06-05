@@ -7,6 +7,8 @@ User Schema to store a users name,email,password, number of poi's
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 const Boom = require('@hapi/boom');
+const bcrypt =  require('bcrypt');
+
 
 const userSchema = new Schema({
     firstName: String,
@@ -25,9 +27,11 @@ userSchema.statics.findByEmail = function (email)
 
 
 // Compare passwords to check they match during authentication
-userSchema.methods.comparePassword = function (candidatePassword)
+userSchema.methods.comparePassword = async function (candidatePassword)
 {
-    const isMatch = this.password === candidatePassword;
+    // const isMatch = this.password === candidatePassword;
+    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+
     if (!isMatch)
     {
         throw Boom.unauthorized('Password mismatch');

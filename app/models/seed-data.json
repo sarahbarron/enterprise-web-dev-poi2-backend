@@ -235,7 +235,7 @@
       "firstName": "Homer",
       "lastName": "Simpson",
       "email": "homer@simpson.com",
-      "password": "secret",
+      "password": "$2b$10$iT2mfyrZhAH1n.496nGP3uwUbDod4m.4kDpulzg8KGMfDgc5TfczG",
       "numOfPoi": 5,
       "scope": "user"
     },
@@ -243,7 +243,7 @@
       "firstName": "Marge",
       "lastName": "Simpson",
       "email": "marge@simpson.com",
-      "password": "secret",
+      "password": "$2b$10$iT2mfyrZhAH1n.496nGP3uwUbDod4m.4kDpulzg8KGMfDgc5TfczG",
       "numOfPoi": 4,
       "scope": "admin"
     },
@@ -251,7 +251,7 @@
       "firstName": "Bart",
       "lastName": "Simpson",
       "email": "bart@simpson.com",
-      "password": "secret",
+      "password": "$2b$10$iT2mfyrZhAH1n.496nGP3uwUbDod4m.4kDpulzg8KGMfDgc5TfczG",
       "numOfPoi": 5,
       "scope": "user"
     }

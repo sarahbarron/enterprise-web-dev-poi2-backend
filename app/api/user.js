@@ -4,6 +4,8 @@ const User = require('../models/user');
 const Boom = require('@hapi/boom');
 const utils = require('./utils');
 const Joi = require('@hapi/joi');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const Users = {
 
@@ -51,13 +53,29 @@ const Users = {
       },
     },
 
-    handler: async function(request, h) {
-      const newUser = new User(request.payload);
-      const user = await newUser.save();
-      if (user) {
-        return h.response(user).code(201);
+    handler: async function(request, h)
+    {
+      try
+      {
+        let alreadyRegistered = await User.findByEmail(request.payload.email);
+        if (alreadyRegistered)
+        {
+          return Boom.unauthorized('Already Registered');
+        }
+        // hash the password to store in the db
+        const hash = await bcrypt.hash(request.payload.password, saltRounds);
+        const newUser = new User(request.payload);
+        newUser.password = hash;
+        const user = await newUser.save();
+        if (user)
+        {
+          return h.response({ success: true, user: user}).code(201);
+        }
+        return Boom.badImplementation('error creating user');
+      } catch (err)
+      {
+        return Boom.notFound('internal db failure');
       }
-      return Boom.badImplementation('error creating user');
     }
   },
 
@@ -101,12 +119,17 @@ const Users = {
     },
     handler: async function (request, h) {
       try {
-        const user = await User.findOne({ email: request.payload.email });
+        const user = await User.findByEmail(request.payload.email);
         if (!user) {
           return Boom.unauthorized('User not found');
-        } else if (user.password !== request.payload.password) {
+        }
+
+        else if (!await user.comparePassword(request.payload.password)){
+          // else if (user.password !== request.payload.password) {
           return Boom.unauthorized('Invalid password');
-        } else {
+        }
+
+        else {
           const token = utils.createToken(user);
           return h.response({ success: true, token: token }).code(201);
         }
