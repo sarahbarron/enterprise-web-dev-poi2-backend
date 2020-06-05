@@ -131,7 +131,7 @@ const Users = {
 
         else {
           const token = utils.createToken(user);
-          return h.response({ success: true, token: token }).code(201);
+          return h.response({ success: true, token: token, scope: user.scope }).code(201);
         }
       } catch (err) {
         return Boom.notFound('internal db failure');
