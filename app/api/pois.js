@@ -20,7 +20,7 @@ const Pois = {
     {
       try
       {
-        const pois = await Poi.find().populate('category').populate('location').populate('image').lean();
+        const pois = await Poi.find().populate('category').populate('location').populate('image').populate('user').lean();
         return pois;
       } catch (err)
       {
@@ -39,7 +39,7 @@ const Pois = {
     {
       try
       {
-        const poi = await Poi.findOne({ _id: request.params.id }).populate('category').populate('location').populate('image').lean();
+        const poi = await Poi.findOne({ _id: request.params.id }).populate('user').populate('category').populate('location').populate('image').lean();
         if (!poi)
         {
           return Boom.notFound('No Pois with this Id');
