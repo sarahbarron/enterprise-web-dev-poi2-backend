@@ -8,6 +8,7 @@ const Image = require('../models/image');
 const utils = require('./utils');
 const ObjectId = require('mongodb').ObjectID;
 const Joi = require('@hapi/joi');
+const PoiUtil = require('../utils/poi-util');
 
 const Pois = {
 
@@ -166,7 +167,8 @@ const Pois = {
     },
     handler: async function(request, h)
     {
-      const response = await Poi.deleteOne({ _id: request.params.id });
+      const response = await PoiUtil.deletePoi(request.params.id);
+      // const response = await Poi.deleteOne({ _id: request.params.id });
       if (response.deletedCount == 1)
       {
         return { success: true };

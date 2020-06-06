@@ -39,7 +39,7 @@ module.exports=[
   { method: 'GET', path: '/api/images', config: Images.find },
   { method: 'GET', path: '/api/images/{id}', config: Images.findOne },
   { method: 'POST', path: '/api/images', config: Images.create },
-  { method: 'DELETE', path: '/api/images/{id}', config: Images.deleteOne },
+  { method: 'DELETE', path: '/api/poi/{poi_id}/images/{img_id}', config: Images.deleteOne },
   { method: 'DELETE', path: '/api/images', config: Images.deleteAll },
 
 ];

@@ -3,6 +3,9 @@
 const Image = require('../models/image');
 const Boom = require('@hapi/boom');
 const Utils = require('../utils/image-store');
+const imageStore = require('../utils/image-store');
+const Poi = require('../models/poi');
+
 const Images = {
   find: {
     auth: false,
@@ -49,7 +52,10 @@ const Images = {
   deleteOne: {
     auth: false,
     handler: async function(request, h) {
-      const response = await Image.deleteOne({ _id: request.params.id });
+      const poi_id = request.params.poi_id;
+      const img_id = request.params.img_id;
+      const response = await imageStore.deleteImage(poi_id, img_id);
+      // const response = await Image.deleteOne({ _id: request.params.id });
       if (response.deletedCount == 1) {
         return { success: true };
       }

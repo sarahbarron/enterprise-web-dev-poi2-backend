@@ -76,13 +76,12 @@ const ImageStore = {
     },
 
     // Method to delete an image
-    deleteImage: async function (image_id)
+    deleteImage: async function (poi_id, image_id)
     {
         try
         {
             const image_obj = await Image.findById(image_id).populate('poi').lean();
             const image_public_id = image_obj.public_id;
-            const poi_id = image_obj.poi._id.toString();
 
             // Delete the objectId reference from the POI schema
             await Poi.findByIdAndUpdate(
@@ -99,11 +98,15 @@ const ImageStore = {
                   }
               });
 
-            // Delete image document from MongoDB
-            await Image.findByIdAndDelete(image_id);
-
             // delete the image from cloudinary
-            await cloudinary.v2.uploader.destroy(image_public_id, {});
+            //commented out for development & keeping seed data
+            // persistent uncomment for live site
+            // await cloudinary.v2.uploader.destroy(image_public_id, {});
+
+            // Delete image document from MongoDB
+            const response = await Image.deleteOne({ _id: image_id });
+            return response;
+
         } catch (e)
         {
             console.log("Delete Image Error: " + e);
