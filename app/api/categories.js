@@ -2,6 +2,8 @@
 
 const Category = require('../models/categories');
 const Boom = require('@hapi/boom');
+const Poi = require('../models/poi');
+const PoiUtils = require('../utils/poi-util');
 
 const Categories = {
   find: {
@@ -58,6 +60,18 @@ const Categories = {
       strategy: 'jwt',
     },
     handler: async function(request, h) {
+      const category_id = request.params.id;
+      const pois = await Poi.find({category: category_id});
+      if (pois.length > 0)
+      {
+        let i;
+        for (i = 0; i < pois.length; i++)
+        {
+          let poi_id = pois[i]._id;
+          PoiUtils.deletePoi(poi_id);
+
+        }
+      }
       const response = await Category.deleteOne({ _id: request.params.id });
       if (response.deletedCount == 1) {
         return { success: true };
