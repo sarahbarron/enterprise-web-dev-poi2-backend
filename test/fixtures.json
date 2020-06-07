@@ -84,13 +84,22 @@
     }
    ],
 
-  "newPoi": {
-    "name": "Cove",
-    "description": "boards."
+
+  "newUser": {
+    "firstName": "New",
+    "lastName": "User",
+    "email": "newuser@simpson.com",
+    "password": "$2b$10$iT2mfyrZhAH1n.496nGP3uwUbDod4m.4kDpulzg8KGMfDgc5TfczG"
   },
-  "newPoi2": {
-    "name": "another poi",
-    "description": "just another poi to test delete all"
+  "newUser2": {
+    "firstName": "New2",
+    "lastName": "User2",
+    "email": "newuser2@simpson.com",
+    "password": "$2b$10$iT2mfyrZhAH1n.496nGP3uwUbDod4m.4kDpulzg8KGMfDgc5TfczG"
+  },
+  "newImage": {
+    "public_id": "fixtures_json_for_testing_newImage",
+    "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
   },
 
   "newLocation": {
@@ -106,20 +115,30 @@
   "newRating": {
     "rating": 5
   },
-  "newUser": {
-    "firstName": "New",
-    "lastName": "User",
-    "email": "newuser@simpson.com",
-    "password": "secretsecret"
+
+  "newPoi": {
+    "name": "another poi",
+    "description": "just another poi to test delete all",
+    "location":{
+      "lng": -7.399,
+      "lat": 52.1079
+    },
+    "image": {
+      "public_id": "fixtures_json_for_testing_newImage",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
+    }
   },
-  "newUser2": {
-    "firstName": "New2",
-    "lastName": "User2",
-    "email": "newuser2@simpson.com",
-    "password": "secret2"
-  },
-  "newImage": {
-    "public_id": "fixtures_json_for_testing_newImage",
-    "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
+  "newPoi2": {
+    "name": "another poi",
+    "description": "just another poi to test delete all",
+    "location":{
+      "lng": -7.399,
+      "lat": 52.1079
+    },
+    "image": {
+      "public_id": "fixtures_json_for_testing_newImage",
+      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
+    }
   }
+
 }

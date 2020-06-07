@@ -62,6 +62,7 @@ suite('Images Api Tests', function()
   test('delete a image', async function ()
   {
     let i = await poiService.createImage(newImage);
+    let p = await poiService.cre
     assert(i._id != null);
     await poiService.deleteOneImage(i._id);
     i = await poiService.getImage(i._id);

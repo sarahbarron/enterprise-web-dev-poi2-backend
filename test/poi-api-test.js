@@ -11,6 +11,8 @@ suite('Poi Api Tests', function()
   let pois = fixtures.poi;
   let newCategory = fixtures.newCategory;
   let newLocation = fixtures.newLocation;
+  let images = fixtures.image;
+  let newImage = fixtures.newImage;
   let newPoi = fixtures.newPoi;
   let newUser = fixtures.newUser;
   const poiService = new PoiService(fixtures.poiService);
@@ -42,8 +44,9 @@ suite('Poi Api Tests', function()
   test('create a poi', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
-    const returnedLocation = await poiService.createLocation(newLocation);
-    await poiService.createPoi(returnedCategory._id, returnedLocation._id, pois[0]);
+    // const returnedLocation = await poiService.createLocation(newLocation);
+    // const returnedImage = await poiService.createImage(newImage);
+    await poiService.createPoi(returnedCategory._id, newPoi);
     const returnedPois = await poiService.getPois();
     assert.equal(returnedPois.length, 1);
     assert(_.some([returnedPois[0]], pois[0]),

@@ -145,10 +145,10 @@ class PoiService {
     }
   }
 
-  async createPoi(catid, locid, newPoi) {
+  async createPoi(catid,newPoi) {
     try
     {
-      const response = await axios.post(this.baseUrl + '/api/categories/'+catid+'/locations/'+locid+'/pois', newPoi);
+      const response = await axios.post(this.baseUrl + '/api/categories/'+catid+'/pois', newPoi);
       return response.data;
     }catch (e){
       return null;
@@ -201,8 +201,8 @@ class PoiService {
     return response.data;
   }
 
-  async deleteOneImage(id) {
-    const response = await axios.delete(this.baseUrl + '/api/images/' + id);
+  async deleteOneImage(poi_id, id) {
+    const response = await axios.delete(this.baseUrl + '/api/poi/'+poi_id+'/images/' + id);
     return response.data;
   }
 

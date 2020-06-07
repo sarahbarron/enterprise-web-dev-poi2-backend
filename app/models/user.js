@@ -29,7 +29,7 @@ userSchema.statics.findByEmail = function (email)
 // Compare passwords to check they match during authentication
 userSchema.methods.comparePassword = async function (candidatePassword)
 {
-    // const isMatch = this.password === candidatePassword;
+    // use bcrypt to compare hashed password with user input
     const isMatch = await bcrypt.compare(candidatePassword, this.password);
 
     if (!isMatch)

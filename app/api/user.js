@@ -7,35 +7,43 @@ const Joi = require('@hapi/joi');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+// Users api
 const Users = {
-
+  // Find all users
   find: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
-    handler: async function(request, h) {
+    handler: async function(request, h)
+    {
       const users = await User.find();
       return users;
     }
   },
 
+  // find one user
   findOne: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
-    handler: async function(request, h) {
-      try {
+    handler: async function(request, h)
+    {
+      try
+      {
         const user = await User.findOne({ _id: request.params.id });
-        if (!user) {
+        if (!user)
+        {
           return Boom.notFound('No User with this id');
         }
         return user;
-      } catch (err) {
+      } catch (err)
+      {
         return Boom.notFound('No User with this id');
       }
     }
   },
 
+  // create a user
   create: {
     auth: false,
     // Joi Validation of fields
@@ -46,17 +54,18 @@ const Users = {
         email: Joi.string()
           .email()
           .required(),
-        password: Joi.string().required(),
+        password: Joi.string().required()
       },
       options: {
         abortEarly: false
-      },
+      }
     },
 
     handler: async function(request, h)
     {
       try
       {
+        // check if the user is already registered
         let alreadyRegistered = await User.findByEmail(request.payload.email);
         if (alreadyRegistered)
         {
@@ -69,7 +78,7 @@ const Users = {
         const user = await newUser.save();
         if (user)
         {
-          return h.response({ success: true, user: user}).code(201);
+          return h.response({ success: true, user: user }).code(201);
         }
         return Boom.badImplementation('error creating user');
       } catch (err)
@@ -79,29 +88,38 @@ const Users = {
     }
   },
 
+  // delete all users
   deleteAll: {
+    // when testing comment out auth jwt and leave open
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
-    handler: async function(request, h) {
+    // when testing uncomment auth = false
+    // auth: false,
+    handler: async function(request, h)
+    {
       await User.deleteMany({});
       return { success: true };
     }
   },
 
+  // delete one user
   deleteOne: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
-    handler: async function(request, h) {
+    handler: async function(request, h)
+    {
       const user = await User.deleteOne({ _id: request.params.id });
-      if (user) {
+      if (user)
+      {
         return { success: true };
       }
       return Boom.notFound('id not found');
     }
   },
 
+  // authenticate users
   authenticate: {
     auth: false,
 
@@ -111,33 +129,45 @@ const Users = {
         email: Joi.string()
           .email()
           .required(),
-        password: Joi.string().required(),
+        password: Joi.string().required()
       },
       options: {
         abortEarly: false
-      },
-    },
-    handler: async function (request, h) {
-      try {
-        const user = await User.findByEmail(request.payload.email);
-        if (!user) {
-          return Boom.unauthorized('User not found');
-        }
-
-        else if (!await user.comparePassword(request.payload.password)){
-          // else if (user.password !== request.payload.password) {
-          return Boom.unauthorized('Invalid password');
-        }
-
-        else {
-          const token = utils.createToken(user);
-          return h.response({ success: true, token: token, scope: user.scope }).code(201);
-        }
-      } catch (err) {
-        return Boom.notFound('internal db failure');
       }
     },
-  },
+    handler: async function(request, h)
+    {
+      try
+      {
+        // check for user email address
+        const user = await User.findByEmail(request.payload.email);
+        if (!user)
+        {
+          return Boom.unauthorized('User not found');
+        }
+          // compare passwords using hashing & salting if they dont
+        // match send an error
+        else if (!await user.comparePassword(request.payload.password))
+        {
+          return Boom.unauthorized('Invalid password');
+        }
+          // if the user is authenticated with matching email & password
+        //  setup a token
+        else
+        {
+          const token = utils.createToken(user);
+          return h.response({
+            success: true,
+            token: token,
+            scope: user.scope
+          }).code(201);
+        }
+      } catch (err)
+      {
+        return Boom.notFound('internal db failure');
+      }
+    }
+  }
 };
 
 module.exports = Users;

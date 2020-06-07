@@ -15,7 +15,7 @@ const Pois = {
   // Find all pois
   find: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
     handler: async function(request, h)
     {
@@ -31,10 +31,10 @@ const Pois = {
     }
   },
 
-  // Find One Pois
+  // Find One Poi
   findOne: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
     handler: async function(request, h)
     {
@@ -56,7 +56,7 @@ const Pois = {
   // Find pois by user Id
   findByUser: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
     handler: async function(request, h)
     {
@@ -70,7 +70,7 @@ const Pois = {
   // finds pois by the category id
   findByCategory: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
     handler: async function(request, h)
     {
@@ -82,7 +82,7 @@ const Pois = {
 //  Create a Pois
   create: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
 
     /* Joi validation of fields if any errors return a boom
@@ -97,7 +97,7 @@ const Pois = {
       },
       options: {
         abortEarly: false
-      },
+      }
     },
 
     handler: async function(request, h)
@@ -134,16 +134,18 @@ const Pois = {
     }
   },
 
+  // Add an image to a poi
   addImage: {
+
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
     handler: async function(request, h)
     {
       let poi = await Poi.findOne({ _id: request.payload.poi_id });
       poi.image.push(ObjectId(request.payload.img_id));
       await poi.save();
-      poi = await Poi.findOne({ _id: request.payload.poi_id }).populate("category").populate("location").populate("image").lean();
+      poi = await Poi.findOne({ _id: request.payload.poi_id }).populate('category').populate('location').populate('image').lean();
       return poi;
     }
   },
@@ -151,7 +153,7 @@ const Pois = {
 //  delete all pois
   deleteAll: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
     handler: async function(request, h)
     {
@@ -163,7 +165,7 @@ const Pois = {
 //  delete one
   deleteOne: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
     handler: async function(request, h)
     {
@@ -177,29 +179,29 @@ const Pois = {
     }
   },
 
+  // update a poi
   update: {
     auth: {
-      strategy: 'jwt',
+      strategy: 'jwt'
     },
-
 
     handler: async function(request, h)
     {
       try
-        {
-          const userEdit = request.payload;
-          const poi_id = request.params.id;
-          const poi = await Poi.findById(poi_id);
-          poi.name = userEdit.name;
-          poi.category = userEdit.category;
-          poi.description = userEdit.description;
-          await poi.save();
-          return poi;
-        } catch (err)
-        {
-          return h.view('home', {errors: [{message: err.message}]});
-        }
+      {
+        const userEdit = request.payload;
+        const poi_id = request.params.id;
+        const poi = await Poi.findById(poi_id);
+        poi.name = userEdit.name;
+        poi.category = userEdit.category;
+        poi.description = userEdit.description;
+        await poi.save();
+        return poi;
+      } catch (err)
+      {
+        return h.view('home', { errors: [{ message: err.message }] });
+      }
     }
   }
-}
+};
 module.exports = Pois;
