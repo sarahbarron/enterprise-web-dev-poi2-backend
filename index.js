@@ -38,6 +38,14 @@ async function init() {
     await server.register(require('@hapi/vision'));
     await server.register(require('@hapi/cookie'));
     await server.register(require('hapi-auth-jwt2'));
+    await  server.register({
+        plugin: require('disinfect'),
+        options: {
+            disinfectQuery: true,
+            disinfectParams: true,
+            disinfectPayload: true
+        }
+    });
 
     // Configure Cloudinary
     ImageStore.configure(credentials);

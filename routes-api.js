@@ -16,9 +16,12 @@ module.exports=[
   { method: 'GET', path: '/api/pois/user', config: Pois.findByUser},
   { method: 'GET', path: '/api/pois/{id}', config: Pois.findOne },
   { method: 'GET', path: '/api/pois/{id}/category', config: Pois.findByCategory},
-  { method: 'POST', path: '/api/categories/{catid}/locations/{locid}/pois', config: Pois.create},
+  { method: 'POST', path: '/api/categories/{id}/pois', config: Pois.create},
   { method: 'DELETE', path: '/api/pois/{id}', config: Pois.deleteOne },
   { method: 'DELETE', path: '/api/pois', config: Pois.deleteAll },
+  { method: 'POST', path: '/api/pois/addimage', config: Pois.addImage},
+  { method: 'POST', path: '/api/pois/update/{id}', config: Pois.update},
+
 
   { method: 'GET', path: '/api/categories', config: Categories.find },
   { method: 'GET', path: '/api/categories/{id}', config: Categories.findOne },
@@ -31,11 +34,12 @@ module.exports=[
   { method: 'POST', path: '/api/locations', config: Locations.create },
   { method: 'DELETE', path: '/api/locations/{id}', config: Locations.deleteOne },
   { method: 'DELETE', path: '/api/locations', config: Locations.deleteAll },
+  { method: 'POST', path: '/api/locations/update/{id}', config: Locations.update},
 
   { method: 'GET', path: '/api/images', config: Images.find },
   { method: 'GET', path: '/api/images/{id}', config: Images.findOne },
   { method: 'POST', path: '/api/images', config: Images.create },
-  { method: 'DELETE', path: '/api/images/{id}', config: Images.deleteOne },
+  { method: 'DELETE', path: '/api/poi/{poi_id}/images/{img_id}', config: Images.deleteOne },
   { method: 'DELETE', path: '/api/images', config: Images.deleteAll },
 
 ];

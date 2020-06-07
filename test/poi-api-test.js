@@ -10,6 +10,9 @@ suite('Poi Api Tests', function()
 {
   let pois = fixtures.poi;
   let newCategory = fixtures.newCategory;
+  let newLocation = fixtures.newLocation;
+  let images = fixtures.image;
+  let newImage = fixtures.newImage;
   let newPoi = fixtures.newPoi;
   let newUser = fixtures.newUser;
   const poiService = new PoiService(fixtures.poiService);
@@ -41,8 +44,10 @@ suite('Poi Api Tests', function()
   test('create a poi', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
-    await poiService.createPoi(returnedCategory._id, pois[0]);
-    const returnedPois = await poiService.getPois(returnedCategory._id);
+    // const returnedLocation = await poiService.createLocation(newLocation);
+    // const returnedImage = await poiService.createImage(newImage);
+    await poiService.createPoi(returnedCategory._id, newPoi);
+    const returnedPois = await poiService.getPois();
     assert.equal(returnedPois.length, 1);
     assert(_.some([returnedPois[0]], pois[0]),
       'returned poi must be a superset of poi');
@@ -51,12 +56,13 @@ suite('Poi Api Tests', function()
   test('create multiple pois', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
+    const returnedLocation = await poiService.createLocation(newLocation);
     for (var i = 0; i < pois.length; i++)
     {
-      await poiService.createPoi(returnedCategory._id, pois[i]);
+      await poiService.createPoi(returnedCategory._id, returnedLocation._id, pois[i]);
     }
 
-    const returnedPois = await poiService.getPois(returnedCategory._id);
+    const returnedPois = await poiService.getPois();
     assert.equal(returnedPois.length, pois.length);
     for (var i = 0; i < pois.length; i++)
     {
@@ -69,7 +75,8 @@ suite('Poi Api Tests', function()
   test('get a single poi', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
-    const p1 = await poiService.createPoi(returnedCategory._id, pois[0]);
+    const returnedLocation = await poiService.createLocation(newLocation);
+    const p1 = await poiService.createPoi(returnedCategory._id, returnedLocation._id, pois[0]);
     const p2 = await poiService.getPoi(p1._id);
     assert.deepEqual(p1, p2);
   });
@@ -86,7 +93,9 @@ suite('Poi Api Tests', function()
   test('delete a poi', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
-    let p = await poiService.createPoi(returnedCategory._id, pois[0]);
+    const returnedLocation = await poiService.createLocation(newLocation);
+    let p =await poiService.createPoi(returnedCategory._id, returnedLocation._id, pois[0]);
+
     assert(p._id != null);
     await poiService.deleteOnePoi(p._id);
     p = await poiService.getPoi(p._id);
@@ -98,9 +107,10 @@ suite('Poi Api Tests', function()
   test('delete all pois', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
+    const returnedLocation = await poiService.createLocation(newLocation);
     for (let p of pois)
     {
-      await poiService.createPoi(returnedCategory._id, p);
+      await poiService.createPoi(returnedCategory._id, returnedLocation._id, p);
     }
     let allPois = await poiService.getPois();
     assert.equal(allPois.length, pois.length);
@@ -113,9 +123,10 @@ suite('Poi Api Tests', function()
   test('get all pois', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
+    const returnedLocation = await poiService.createLocation(newLocation);
     for (let p of pois)
     {
-      await poiService.createPoi(returnedCategory._id, p);
+      await poiService.createPoi(returnedCategory._id, returnedLocation._id, p);
     }
     const allPois = await poiService.getPois();
     assert.equal(allPois.length, pois.length);
@@ -126,9 +137,10 @@ suite('Poi Api Tests', function()
   test('get pois detail', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
+    const returnedLocation = await poiService.createLocation(newLocation);
     for (let p of pois)
     {
-      await poiService.createPoi(returnedCategory._id, p);
+      await poiService.createPoi(returnedCategory._id, returnedLocation._id, p);
     }
     const allPois = await poiService.getPois();
     for (var i = 0; i < pois.length; i++)
@@ -148,7 +160,8 @@ suite('Poi Api Tests', function()
   test('create a poi and check user', async function()
   {
     const returnedCategory = await poiService.createCategory(newCategory);
-    await poiService.createPoi(returnedCategory._id, pois[0]);
+    const returnedLocation = await poiService.createLocation(newLocation);
+    await poiService.createPoi(returnedCategory._id, returnedLocation._id,pois[0]);
     const returnedPois = await poiService.getPois();
     assert.isDefined(returnedPois[0].user);
 
@@ -156,12 +169,12 @@ suite('Poi Api Tests', function()
     assert(_.some([users[0]], newUser), 'returnedUser must be a superset of newUser');
   });
 
-  test('find poi by user id', async function()
-  {
-
-  });
-  test('find poi by category', async function()
-  {
-
-  });
+  // test('find poi by user id', async function()
+  // {
+  //
+  // });
+  // test('find poi by category', async function()
+  // {
+  //
+  // });
 })
