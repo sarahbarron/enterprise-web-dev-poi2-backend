@@ -26,11 +26,11 @@ const credentials = {
 
 // Only need for local development
 //if the .env file cant be found handle the error
-const result = dotenv.config();
-if (result.error) {
-    console.log(result.error.message);
-    process.exit(1);
-}
+// const result = dotenv.config();
+// if (result.error) {
+//     console.log(result.error.message);
+//     process.exit(1);
+// }
 
 async function init() {
     // Register plugins
