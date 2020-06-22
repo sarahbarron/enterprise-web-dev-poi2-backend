@@ -10,7 +10,9 @@ const Poi = require('../models/poi');
 const Images = {
   // find all images
   find: {
-    auth: false,
+    auth: {
+      strategy: 'jwt'
+    },
     handler: async function(request, h)
     {
       const images = await Image.find();
@@ -20,7 +22,9 @@ const Images = {
 
   // find one image
   findOne: {
-    auth: false,
+    auth: {
+      strategy: 'jwt'
+    },
     handler: async function(request, h)
     {
       try
@@ -41,7 +45,9 @@ const Images = {
 
   // create an image
   create: {
-    auth: false,
+    auth: {
+      strategy: 'jwt'
+    },
     handler: async function(request, h)
     {
       const newImage = new Image(request.payload);
@@ -56,7 +62,9 @@ const Images = {
 
   // delete all images
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: 'jwt'
+    },
     handler: async function(request, h)
     {
       await Image.deleteMany({});
@@ -66,7 +74,9 @@ const Images = {
 
   // delete one image
   deleteOne: {
-    auth: false,
+    auth: {
+      strategy: 'jwt'
+    },
     handler: async function(request, h)
     {
       const poi_id = request.params.poi_id;

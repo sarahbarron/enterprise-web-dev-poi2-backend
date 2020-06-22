@@ -5,48 +5,64 @@ const PoiService = require('./poi-service');
 const fixtures = require('./fixtures.json');
 const _ = require('lodash');
 
-suite('Location API tests', function () {
+/*
+Test Suite for the Location API
+ */
+suite('Location API tests', function ()
+{
 
+  this.timeout(5000);
   let locations = fixtures.location;
   let newLocation = fixtures.newLocation;
   const poiService = new PoiService(fixtures.poiService);
   let newUser = fixtures.newUser;
+  let newUserAuth = {
+    email: newUser.email,
+    password: newUser.password
+  }
 
-  suiteSetup(async function() {
+  suiteSetup(async function()
+  {
     await poiService.deleteAllUsers();
     const returnedUser = await poiService.createUser(newUser);
-    const response = await poiService.authenticate(newUser);
+    const response = await poiService.authenticate(newUserAuth);
   });
 
-  suiteTeardown(async function() {
+  suiteTeardown(async function()
+  {
     await poiService.deleteAllUsers();
     poiService.clearAuth();
   });
 
-  setup(async function () {
-    await poiService.deleteAllLocations();
-  });
-
-  teardown(async function ()
+  setup(async function()
   {
     await poiService.deleteAllLocations();
   });
 
-  test('create a location', async function () {
+  teardown(async function()
+  {
+    await poiService.deleteAllLocations();
+  });
+
+  // test creating a new location
+  test('create a location', async function()
+  {
     const returnedLocation = await poiService.createLocation(newLocation);
     assert(_.some([returnedLocation], newLocation),
       'returnedLocation must be a superset of newLocation');
     assert.isDefined(returnedLocation._id);
   });
 
-  test('get a single location', async function ()
+  // test getting a single location
+  test('get a single location', async function()
   {
     const l1 = await poiService.createLocation(newLocation);
     const l2 = await poiService.getLocation(l1._id);
     assert.deepEqual(l1, l2);
   });
 
-  test('get invalid location', async function ()
+  // test that an invalid location returns null
+  test('get invalid location', async function()
   {
     const l1 = await poiService.getLocation('1234');
     assert.isNull(l1)
@@ -54,39 +70,75 @@ suite('Location API tests', function () {
     assert.isNull(l2);
   });
 
-  test('delete a location', async function() {
+  // test deleting a single location
+  test('delete a location', async function()
+  {
     let l = await poiService.createLocation(newLocation);
     assert(l._id != null);
     await poiService.deleteOneLocation(l._id);
     l = await poiService.getLocation(l._id);
-    assert(l==null);
+    assert(l == null);
   });
 
-
-  test('get all locations', async function ()
+  // Test deleting all locations
+  test('delete all locations', async function()
   {
-    for(let l of locations){
+    for (let l of locations)
+    {
+      await poiService.createLocation(l);
+    }
+    let allLocations = await poiService.getLocations();
+    assert.equal(allLocations.length, locations.length);
+    await poiService.deleteAllLocations();
+    allLocations = await poiService.getLocations();
+    assert.equal(allLocations.length, 0);
+  });
+
+  // Test getting all locations
+  test('get all locations', async function()
+  {
+    for (let l of locations)
+    {
       await poiService.createLocation(l);
     }
     const allLocations = await poiService.getLocations();
     assert.equal(allLocations.length, locations.length);
   });
 
-  test('get locations detail', async function ()
+  // Test that a locations details are correct
+  test('get locations detail', async function()
   {
-    for(let l of locations){
+    for (let l of locations)
+    {
       await poiService.createLocation(l);
     }
     const allLocations = await poiService.getLocations();
-    for (var i=0; i<locations.length; i++)
+    for (var i = 0; i < locations.length; i++)
     {
       assert(_.some([allLocations[i]], locations[i]),
         'returnedLocation must be a superset of the newLocation')
     }
   });
-  test('get all locations empty', async function ()
+
+  // Test that the array is empty when there are no stored locations
+  test('get all locations empty', async function()
   {
     const allLocations = await poiService.getLocations();
     assert.equal(allLocations.length, 0);
   });
+
+  // Test updating a location
+  test('update location', async function()
+  {
+    let location = await poiService.createLocation(newLocation);
+    const locationId = location._id;
+    const newCoordinates = {
+      lat: 40.4,
+      lng: -5.3
+    }
+    location = await poiService.updateLocation(locationId, newCoordinates);
+    assert(_.some([location, newCoordinates]), 'updateLocation must' +
+      ' be a superset of the newCoordinates');
+  });
 });
+

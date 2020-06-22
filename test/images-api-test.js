@@ -5,18 +5,25 @@ const PoiService = require('./poi-service');
 const fixtures = require('./fixtures.json');
 const _ = require('lodash');
 
-
+/*
+Test Suite for the Images API
+ */
 suite('Images Api Tests', function()
 {
+  this.timeout(5000);
   let images = fixtures.image;
   let newImage = fixtures.newImage;
   const poiService = new PoiService(fixtures.poiService);
   let newUser = fixtures.newUser;
+  let newUserAuth = {
+    email: newUser.email,
+    password: newUser.password
+  }
 
   suiteSetup(async function () {
     await poiService.deleteAllUsers();
     const returnedUser = await poiService.createUser(newUser);
-    const response = await poiService.authenticate(newUser);
+    const response = await poiService.authenticate(newUserAuth);
   });
   suiteTeardown(async function() {
     await poiService.deleteAllUsers();
@@ -49,7 +56,7 @@ suite('Images Api Tests', function()
     assert.deepEqual(i1, i2);
   });
 
-  // test trying to get an invalid image
+  // test an invalid image returns null
   test('get invalid image', async function ()
   {
     const i1 = await poiService.getImage('1234');
@@ -58,27 +65,40 @@ suite('Images Api Tests', function()
     assert.isNull(i2);
   });
 
-  //Delete a single image with its id
-  test('delete a image', async function ()
+  // test deleting a single image with its id and poi id
+  test('delete an image', async function ()
   {
-    let i = await poiService.createImage(newImage);
-    let p = await poiService.cre
-    assert(i._id != null);
-    await poiService.deleteOneImage(i._id);
-    i = await poiService.getImage(i._id);
-    assert(i==null);
-  });
-
-//  Delete all Image
-  test('delete all images', async function ()
-  {
-    for(let i of images){
-      await poiService.createImage(i);
+    const newCategory = fixtures.newCategory;
+    const newLocation = fixtures.newLocation;
+    const newImage = fixtures.newImage;
+    const basicPoi = fixtures.newPoi;
+    const image = await poiService.createImage(newImage);
+    const location = await poiService.createLocation(newLocation);
+    const category = await poiService.createCategory(newCategory);
+    const newPoi = {
+      "name": basicPoi.name,
+      "description": basicPoi.description,
+      "category": category,
+      "location": location,
+      "image": image
     }
-    await poiService.deleteAllImages();
-    const allImages = await poiService.getImages();
-    assert.equal(allImages.length, 0);
-  })
+    // create a poi and confirm the image has been saved
+    let poi = await poiService.createPoi(category._id, newPoi);
+    assert.isNotNull(poi.image[0]);
+
+    let img_id = poi.image[0];
+    // delete the image
+    await poiService.deleteOneImage(poi._id, img_id);
+
+    // get the poi and check that the image has been deleted from the
+    // poi
+    poi = await poiService.getPoi(poi._id);
+    assert.equal(poi.image.length, 0);
+
+    // get the image by its id and check that it returns null
+    const img = await poiService.getImage(img_id);
+    assert.isNull(img);
+  });
 
 //  test to get all images
   test('get all images', async function ()

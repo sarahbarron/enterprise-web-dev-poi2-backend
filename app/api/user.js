@@ -75,6 +75,8 @@ const Users = {
         const hash = await bcrypt.hash(request.payload.password, saltRounds);
         const newUser = new User(request.payload);
         newUser.password = hash;
+        newUser.numOfPoi = 0;
+        newUser.scope ='user';
         const user = await newUser.save();
         if (user)
         {
@@ -91,11 +93,11 @@ const Users = {
   // delete all users
   deleteAll: {
     // when testing comment out auth jwt and leave open
-    auth: {
-      strategy: 'jwt'
-    },
+    // auth: {
+    //    strategy: 'jwt'
+    // },
     // when testing uncomment auth = false
-    // auth: false,
+    auth: false,
     handler: async function(request, h)
     {
       await User.deleteMany({});

@@ -23,14 +23,14 @@ const credentials = {
     api_key: process.env.CLOUDINARY_KEY,
     api_secret: process.env.CLOUDINARY_SECRET
 };
-
+//
 // Only need for local development
-//if the .env file cant be found handle the error
-// const result = dotenv.config();
-// if (result.error) {
-//     console.log(result.error.message);
-//     process.exit(1);
-// }
+// if the .env file cant be found handle the error
+const result = dotenv.config();
+if (result.error) {
+    console.log(result.error.message);
+    process.exit(1);
+}
 
 async function init() {
     // Register plugins

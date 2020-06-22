@@ -2,6 +2,7 @@
 
 const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
+const User = require('../models/user');
 const Category = require('../models/categories');
 const Location = require('../models/location');
 const Image = require('../models/image');
@@ -104,12 +105,13 @@ const Pois = {
     {
       let poi = new Poi(request.payload);
       const userId = utils.getUserIdFromRequest(request);
+      let user = await User.findOne({_id: userId});
       poi.user = userId;
 
       let image = await Image.findOne({ _id: request.payload.image._id });
       if (!image)
       {
-        return Boom.notFound('No Category with this id');
+        return Boom.notFound('No Image with this id');
       }
       poi.image = image._id;
 
@@ -128,8 +130,9 @@ const Pois = {
       }
       poi.category = category._id;
 
-
       poi = await poi.save();
+      user.numOfPoi = user.numOfPoi + 1;
+      await user.save();
       return poi;
     }
   },

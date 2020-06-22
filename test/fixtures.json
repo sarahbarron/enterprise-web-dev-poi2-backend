@@ -45,6 +45,7 @@
       "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353688/fixture_json_for_testing_2.jpg"
     },
     {
+
       "public_id": "fixture_json_for_testing_3",
       "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1590353663/fixture_json_for_testing_3.jpg"
     }
@@ -89,14 +90,10 @@
     "firstName": "New",
     "lastName": "User",
     "email": "newuser@simpson.com",
-    "password": "$2b$10$iT2mfyrZhAH1n.496nGP3uwUbDod4m.4kDpulzg8KGMfDgc5TfczG"
+    "password": "secret"
   },
-  "newUser2": {
-    "firstName": "New2",
-    "lastName": "User2",
-    "email": "newuser2@simpson.com",
-    "password": "$2b$10$iT2mfyrZhAH1n.496nGP3uwUbDod4m.4kDpulzg8KGMfDgc5TfczG"
-  },
+
+
   "newImage": {
     "public_id": "fixtures_json_for_testing_newImage",
     "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
@@ -106,39 +103,18 @@
     "lng": -7.399,
     "lat": 52.1079
   },
+
   "newCategory": {
     "name": "New Category"
   },
-  "newCategory2": {
-    "name": "2 New Categories"
-  },
+
   "newRating": {
     "rating": 5
   },
 
   "newPoi": {
     "name": "another poi",
-    "description": "just another poi to test delete all",
-    "location":{
-      "lng": -7.399,
-      "lat": 52.1079
-    },
-    "image": {
-      "public_id": "fixtures_json_for_testing_newImage",
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
-    }
-  },
-  "newPoi2": {
-    "name": "another poi",
-    "description": "just another poi to test delete all",
-    "location":{
-      "lng": -7.399,
-      "lat": 52.1079
-    },
-    "image": {
-      "public_id": "fixtures_json_for_testing_newImage",
-      "url": "https://res.cloudinary.com/sarahbarron/image/upload/v1584704044/fixtures_json_for_testing_newImage.jpg"
-    }
+    "description": "just another poi to test delete all"
   }
 
 }
