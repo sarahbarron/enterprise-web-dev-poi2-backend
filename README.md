@@ -2,12 +2,12 @@
 ### Sarah Barron
 #### Hdip Computer Science - Waterford Institute of Technology
 #### Module: Enterprise Web Development
-#### Assignment 1 - POI Web Application Core Version 1
-#### Grade: 98%
+#### Assignment 2 
 
-#### [Heroku deployed website](https://shrouded-shelf-05238.herokuapp.com/)
-#### [Glitch deployed website](https://sarahbarron-enterprise-web-dev-poi-1.glitch.me)
-Implement POI Core + selected features of POI Enhanced
+
+#### [netlify deployed website](https://clever-rosalind-ad10c7.netlify.app/)
+
+Implement POI Core
 Support with the following User Management Features:
 - Sign up / Login in / Delete Account
 - Simple User Admin Dashboard
@@ -18,11 +18,17 @@ Support the following app features:
 - Organise POIs into categories
 - Manage POI Images
 
+Implement POI Enhanced features
+- Show Poi photos
+- Show Poi's on a Map
+- Admin interface
+- Admin dashboard
+
 #### To achieve the project I used the following tools and technologies:
-- NodeJs
+- NodeJs - open-source JavaScript runtime environment.
 - Html, CSS, and Javascript Languages
 - Boom: for error messsage,
-- Hapi framework 
+- Hapi framework - open-sourse framework for web applications
 - Hapi Cookies - to store cookies
 - Hapi inert - static file and directory handler
 - Hapi Joi - validation of forms
@@ -33,5 +39,11 @@ Support the following app features:
 - Mongoose seeder - to seed data to the database
 - Mongoose - Built-in type casting, validation, query building of the database
 - MongoDB Atlas - cloud storage of the database
-- Glitch - deployed site to glitch
-- Heroku - deployed site to heroku
+- Heroku - deployed backend site to heroku
+- Netlify - deployed frontend site to Netlify
+- Json Web Token - for JWT authentication
+- hapi-auth-jwt2 - for JWT authentication
+- Lodash - to help with some Javascript functionality
+- Mocha - javascript test framework
+- Chai - TDD assertion library for node
+- Axios - for making http requests
